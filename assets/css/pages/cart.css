@@ -1,0 +1,137 @@
+.cart-page {
+    background: #f8f9fa;
+}
+
+/* ======================================================
+   BREADCRUMB (Đồng bộ với trang Checkout)
+   ====================================================== */
+.checkout-breadcrumb {
+    background: #eef3ff;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.checkout-breadcrumb .container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.checkout-breadcrumb a {
+    color: #64748b;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.checkout-breadcrumb a:hover {
+    color: var(--brand-blue);
+}
+
+.checkout-breadcrumb i {
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.checkout-breadcrumb span {
+    color: var(--brand-blue);
+    font-weight: 700;
+}
+
+/* ======================================================
+   CÁC THÀNH PHẦN TRONG GIỎ HÀNG
+   ====================================================== */
+.checkout-card,
+.checkout-summary-card,
+.profile-card {
+    background: #fff;
+    border-radius: 1.5rem;
+}
+
+.cart-title {
+    margin-bottom: 1.5rem;
+}
+
+.danh-sach-gio-hang {
+    display: grid;
+    gap: 1rem;
+}
+
+.dong-gio-hang {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid #e9ecef;
+    border-radius: 1rem;
+    align-items: start;
+}
+
+.dong-gio-hang img {
+    width: 95px;
+    height: 95px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.dong-gio-hang h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+}
+
+.nut-so-luong-gio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.75rem;
+}
+
+.nut-so-luong-gio button,
+.nut-so-luong-gio strong,
+.nut-so-luong-gio input {
+    border-radius: 0.75rem;
+}
+
+.nut-so-luong-gio button {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #dee2e6;
+    background: transparent;
+    color: var(--muc-den);
+}
+
+.nut-so-luong-gio input {
+    width: 60px;
+    min-height: 36px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+    padding: 0.5rem;
+}
+
+.xoa-gio {
+    margin-left: auto;
+    border-radius: 999px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.95rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.checkout-summary-card .btn {
+    border-radius: 1rem;
+}
+
+@media (max-width: 991px) {
+    .dong-gio-hang {
+        grid-template-columns: 1fr;
+    }
+    .checkout-summary-card {
+        border-radius: 1.25rem;
+    }
+}

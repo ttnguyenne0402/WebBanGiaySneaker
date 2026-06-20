@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Slide sandal product image</title>
+  <desc id="desc">Minimal slide sandal illustration for a product card.</desc>
+  <rect width="640" height="480" fill="#f2f4f7"/>
+  <path d="M109 300c69-52 147-77 235-77 66 0 126 11 180 34 32 14 44 53 24 82-13 19-35 29-58 25l-94-16c-57-10-113-8-168 6l-55 15c-37 10-75-8-91-43-5-10-2-21 7-26Z" fill="#111827"/>
+  <path d="M201 222c17-72 66-108 146-108 66 0 113 26 143 79 13 24-7 52-34 47-73-15-149-15-229 0-18 3-30-1-26-18Z" fill="#ffffff" stroke="#111827" stroke-width="16"/>
+  <path d="M255 183c57-13 112-13 166 0" fill="none" stroke="#d9291c" stroke-width="18" stroke-linecap="round"/>
+</svg>

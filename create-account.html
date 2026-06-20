@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng ký | SoleStyle</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components/header.css">
+  <link rel="stylesheet" href="assets/css/components/footer.css">
+  <link rel="stylesheet" href="assets/css/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/css/pages/login.css">
+  <style>
+    body {
+      background: #f8f9fa;
+      min-height: 100vh;
+    }
+
+    .auth-page {
+      padding: 4rem 0;
+    }
+
+    .auth-card {
+      max-width: 540px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .08);
+      padding: 2rem;
+    }
+
+    .auth-card h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .auth-card p {
+      color: #6c757d;
+      margin-bottom: 1.5rem;
+    }
+
+    .auth-footer {
+      font-size: 0.95rem;
+      color: #6c757d;
+      margin-top: 1.5rem;
+    }
+
+    .auth-footer a {
+      color: #212529;
+      font-weight: 600;
+    }
+
+    .thong-bao-bieu-mau {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body data-page="create-account">
+  <main class="auth-page">
+    <div class="auth-card">
+      <div class="mb-4 text-center">
+        <a href="index.html" class="text-decoration-none text-dark fs-4 fw-bold">
+          <i class="bi bi-arrow-left"></i> Về trang chủ
+        </a>
+      </div>
+
+      <div class="text-center mb-4">
+        <h1>Đăng ký tài khoản</h1>
+        <p>Điền đầy đủ thông tin để tạo tài khoản mua sắm.</p>
+      </div>
+
+      <div id="thong-bao-dang-ky" class="thong-bao-bieu-mau d-none"></div>
+
+      <form id="bieu-mau-dang-ky" novalidate>
+        <div class="mb-3">
+          <label for="ho-ten-dang-ky" class="form-label">Họ và tên</label>
+          <input id="ho-ten-dang-ky" class="form-control" type="text" placeholder="Họ và tên" required />
+        </div>
+        <div class="mb-3">
+          <label for="email-dang-ky" class="form-label">Email</label>
+          <input id="email-dang-ky" class="form-control" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="mb-3">
+          <label for="dien-thoai-dang-ky" class="form-label">Số điện thoại</label>
+          <input id="dien-thoai-dang-ky" class="form-control" type="tel" placeholder="0912 345 678" required />
+        </div>
+        <div class="mb-3">
+          <label for="mat-khau-dang-ky" class="form-label">Mật khẩu</label>
+          <input id="mat-khau-dang-ky" class="form-control" type="password" placeholder="Mật khẩu" minlength="6"
+            required />
+        </div>
+        <div class="mb-3">
+          <label for="nhap-lai-mat-khau" class="form-label">Nhập lại mật khẩu</label>
+          <input id="nhap-lai-mat-khau" class="form-control" type="password" placeholder="Nhập lại mật khẩu"
+            minlength="6" required />
+        </div>
+        <button class="btn btn-dark w-100" type="submit">Đăng ký</button>
+      </form>
+
+      <div class="auth-footer text-center">
+        <p>Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/data/products.js"></script>
+  <script src="assets/js/core/common.js"></script>
+  <script src="assets/js/pages/create-account.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

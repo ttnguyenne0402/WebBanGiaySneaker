@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Black cap product image</title>
+  <desc id="desc">Minimal baseball cap illustration for a product card.</desc>
+  <rect width="640" height="480" fill="#f2f4f7"/>
+  <path d="M154 267c12-91 77-144 173-144 103 0 172 60 180 157l-34 22H180l-26-35Z" fill="#151515"/>
+  <path d="M179 303c74-20 155-24 243-10 54 9 103 26 151 51-73 27-141 31-202 13-68-20-132-28-192-24v-30Z" fill="#292929"/>
+  <path d="M270 136c-20 51-22 104-6 158" fill="none" stroke="#474747" stroke-width="16" stroke-linecap="round"/>
+  <path d="M383 140c22 53 22 106 0 158" fill="none" stroke="#474747" stroke-width="16" stroke-linecap="round"/>
+  <text x="320" y="251" text-anchor="middle" font-family="Arial, sans-serif" font-size="74" font-weight="800" fill="#ffffff">SS</text>
+</svg>

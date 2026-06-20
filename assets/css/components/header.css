@@ -1,0 +1,280 @@
+/* ===== Header ===== */
+.dai-loi-ich {
+  color: #fff;
+  background: var(--muc-den);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.noi-dung-dai-loi-ich {
+  display: flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  text-align: center;
+}
+
+.noi-dung-dai-loi-ich span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dau-trang-cua-hang {
+  position: relative;
+  z-index: 30;
+  background: #fff;
+}
+
+.thanh-chinh-dau-trang {
+  border-bottom: 1px solid var(--vien);
+  background: #fff;
+}
+
+.noi-dung-header {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 84px;
+  gap: 16px;
+  width: 100%;
+}
+
+.thanh-dieu-huong {
+  z-index: 25;
+}
+
+.logo-cua-hang {
+  width: fit-content;
+  color: var(--muc-den);
+  font-size: 1.24rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  flex-shrink: 0;
+}
+
+.logo-cua-hang small {
+  display: block;
+  color: var(--muc-xam);
+  font-size: 0.68rem;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.ky-hieu-logo {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--muc-den);
+}
+
+.nav-link {
+  color: #242424;
+  font-weight: 800;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--xanh);
+}
+
+.nut-loc-danh-muc {
+  border: 0;
+  background: transparent;
+}
+
+.thanh-danh-muc {
+  min-height: 54px;
+  border: 0;
+  background: var(--muc-den);
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.14);
+}
+
+.thanh-danh-muc .navbar-toggler {
+  margin-left: auto;
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
+.thanh-danh-muc .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.danh-sach-danh-muc {
+  gap: clamp(12px, 3vw, 34px);
+}
+
+.thanh-danh-muc .nav-link {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.thanh-danh-muc .nav-link:hover,
+.thanh-danh-muc .nav-link.active {
+  color: var(--vang);
+}
+
+.thanh-tim-kiem {
+  position: relative;
+  display: grid;
+  flex-grow: 1;
+  flex-shrink: 1;
+  max-width: 600px;
+  width: 100%;
+  grid-template-columns: 42px minmax(0, 1fr) 42px;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #d7dce3;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.thanh-tim-kiem .bi {
+  color: var(--muc-xam);
+}
+
+.thanh-tim-kiem > .bi {
+  justify-self: center;
+}
+
+.thanh-tim-kiem input {
+  width: 100%;
+  min-height: 44px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-weight: 700;
+}
+
+.thanh-tim-kiem button {
+  display: grid;
+  width: 42px;
+  height: 44px;
+  place-items: center;
+  border: 0;
+  color: #fff;
+  background: var(--muc-den);
+}
+
+.hanh-dong-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.nhom-tai-khoan {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nhom-tai-khoan .btn,
+#hanh-dong-nguoi-dung .btn,
+.nut-gio-hang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* Responsive header */
+@media (max-width: 991.98px) {
+  .noi-dung-dai-loi-ich {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 18px;
+    padding: 9px 0;
+  }
+  .noi-dung-header {
+    min-height: auto;
+    gap: 12px;
+    padding: 12px 0;
+  }
+  .danh-sach-danh-muc {
+    gap: 0;
+    padding: 12px 0;
+    align-items: stretch !important;
+  }
+  .thanh-danh-muc .nav-link {
+    min-height: 42px;
+    justify-content: center;
+  }
+  .nut-loc-danh-muc {
+    text-align: left;
+  }
+  .hanh-dong-header {
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  .nhom-tai-khoan {
+    gap: 8px;
+  }
+  .nhom-tai-khoan .btn,
+  #hanh-dong-nguoi-dung .btn,
+  .nut-gio-hang {
+    width: auto;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .noi-dung-header {
+    gap: 9px;
+  }
+  .logo-cua-hang {
+    font-size: 1rem;
+  }
+  .logo-cua-hang small {
+    font-size: 0.58rem;
+  }
+  .ky-hieu-logo {
+    width: 38px;
+    height: 38px;
+  }
+  .thanh-tim-kiem {
+    grid-template-columns: 34px minmax(0, 1fr) 38px;
+  }
+  .thanh-tim-kiem input {
+    min-height: 40px;
+    font-size: 0.9rem;
+  }
+  .thanh-tim-kiem button {
+    width: 38px;
+    height: 40px;
+  }
+  .nut-dang-nhap,
+  .nut-gio-hang {
+    width: 42px !important;
+    height: 42px;
+    padding: 0;
+  }
+  .nut-dang-nhap span,
+  .nut-gio-hang .chu-gio-hang {
+    display: none;
+  }
+  .nut-dang-nhap i,
+  .nut-gio-hang i {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .logo-cua-hang > span:last-child {
+    display: none;
+  }
+  .hanh-dong-header {
+    gap: 7px;
+  }
+}

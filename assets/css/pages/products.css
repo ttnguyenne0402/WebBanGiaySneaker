@@ -1,0 +1,98 @@
+/* Styles riêng cho trang sản phẩm */
+.bo-loc-ngang .filter-brand-button {
+    width: 84px;
+    min-width: 84px;
+    height: 84px;
+    border-radius: 22px;
+    padding: 0.8rem 0.6rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.2rem;
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    color: #212529;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bo-loc-ngang .filter-brand-button:hover,
+.bo-loc-ngang .filter-category-button:hover {
+    transform: translateY(-2px);
+    border-color: #000;
+}
+
+.bo-loc-ngang .filter-brand-button.active,
+.bo-loc-ngang .filter-category-button.active {
+    background-color: #ffffff;
+    border-color: #000;
+    color: #000;
+    box-shadow: none;
+}
+
+.bo-loc-ngang .filter-category-button {
+    min-width: auto;
+    width: auto;
+    height: auto;
+    border-radius: 999px;
+    padding: 0.65rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.2rem;
+    border: 1px solid #000;
+    background-color: #ffffff;
+    color: #000;
+}
+
+.bo-loc-ngang .filter-category-button.active {
+    background-color: #ffffff;
+}
+
+.filter-logo {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #f1f5f9;
+    font-weight: 700;
+    font-size: 1rem;
+    overflow: hidden;
+}
+
+.filter-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.bo-loc-ngang .btn-pill.active .filter-logo,
+.bo-loc-ngang .btn-pill-outline.active .filter-logo {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+.filter-text {
+    display: block;
+    font-size: 0.72rem;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+
+    .bo-loc-ngang .btn-pill,
+    .bo-loc-ngang .btn-pill-outline {
+        width: 64px;
+        min-width: 64px;
+        height: 64px;
+        padding: 0.65rem 0.45rem;
+    }
+
+    .filter-text {
+        font-size: 0.65rem;
+    }
+}

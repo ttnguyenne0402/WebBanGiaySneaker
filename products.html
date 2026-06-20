@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sản phẩm - SoleStyle</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components/header.css">
+  <link rel="stylesheet" href="assets/css/components/footer.css">
+  <link rel="stylesheet" href="assets/css/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/css/pages/products.css">
+</head>
+<body data-page="products" class="trang-phu">
+  <header class="dau-trang-cua-hang">
+    <div class="dai-loi-ich">
+      <div class="container noi-dung-dai-loi-ich">
+        <span><i class="bi bi-telephone-fill"></i> Hotline: 0707 717 271</span>
+        <span><i class="bi bi-envelope-fill"></i> solestyle.cskh@gmail.com</span>
+        <span><i class="bi bi-geo-alt-fill"></i> 171 Huỳnh Văn Bánh, Phú Nhuận, TP.HCM</span>
+      </div>
+    </div>
+    <nav class="thanh-chinh-dau-trang navbar">
+      <div class="container noi-dung-header">
+        <a class="logo-cua-hang d-flex align-items-center gap-2" href="index.html">
+          <span class="ky-hieu-logo">S</span>
+          <span>SoleStyle<small>Only Real</small></span>
+        </a>
+        <form id="bieu-mau-tim-kiem-dau-trang" class="thanh-tim-kiem" role="search">
+          <i class="bi bi-search"></i>
+          <input id="o-tim-kiem" type="search" placeholder="Tìm sản phẩm..." aria-label="Tìm sản phẩm">
+          <button type="submit" aria-label="Tìm kiếm"><i class="bi bi-arrow-right"></i></button>
+        </form>
+        <div class="hanh-dong-header">
+          <div id="hanh-dong-khach" class="nhom-tai-khoan">
+            <a class="btn btn-outline-dark nut-dang-nhap" href="login.html">
+              <i class="bi bi-box-arrow-in-right"></i><span>Đăng nhập</span>
+            </a>
+          </div>
+          <div id="hanh-dong-nguoi-dung" class="dropdown d-none">
+            <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle"></i><span id="ten-nguoi-dung">Tài khoản</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><span id="email-nguoi-dung" class="dropdown-item-text text-secondary"></span></li>
+              <li><a class="dropdown-item" href="profile.html">Hồ sơ</a></li>
+              <li><button id="nut-dang-xuat" class="dropdown-item" type="button">Đăng xuất</button></li>
+            </ul>
+          </div>
+          <button id="nut-mo-gio-hang" class="btn btn-dark position-relative nut-gio-hang" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#khung-gio-hang">
+            <i class="bi bi-bag"></i><span class="chu-gio-hang ms-1">Giỏ hàng</span>
+            <span id="so-luong-gio-hang"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">0</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <nav class="thanh-dieu-huong thanh-danh-muc navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#khung-menu"><span
+            class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="khung-menu">
+          <ul class="navbar-nav danh-sach-danh-muc mx-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
+            <li class="nav-item"><button class="nav-link nut-loc-danh-muc" type="button"
+                data-loc-danh-muc="Giày">Giày</button></li>
+            <li class="nav-item"><button class="nav-link nut-loc-danh-muc" type="button"
+                data-loc-danh-muc="Dép">Dép</button></li>
+            <li class="nav-item"><button class="nav-link nut-loc-danh-muc" type="button"
+                data-loc-danh-muc="Nón">Nón</button></li>
+            <li class="nav-item"><button class="nav-link nut-loc-danh-muc" type="button"
+                data-loc-danh-muc="Phụ kiện">Phụ kiện</button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="khu-san-pham" class="khu-san-pham section-trang">
+      <div class="container">
+        <div class="tieu-de-trang mb-4">
+          <div>
+            <p class="chu-nho">Danh mục</p>
+            <h1 id="tieu-de-danh-sach-san-pham">Tất cả sản phẩm</h1>
+          </div>
+          <span id="so-ket-qua" class="so-ket-qua">0 sản phẩm</span>
+        </div>
+
+        <!-- Thay đổi hiển thị full bề ngang bằng d-block -->
+        <div class="bo-cuc-mua-hang d-block">
+
+          <div class="cot-danh-sach w-100">
+
+            <!-- BẮT ĐẦU: BỘ LỌC NGANG MỚI -->
+            <div class="bo-loc-ngang mb-4 p-4 rounded-4" style="background-color: #f8fafc; border: 1px solid #e5e7eb;">
+              <div class="d-none" aria-hidden="true">
+                <input type="radio" class="loc-danh-muc" name="loc-danh-muc" value="tat-ca">
+                <input type="radio" class="loc-danh-muc" name="loc-danh-muc" value="Giày">
+                <input type="radio" class="loc-danh-muc" name="loc-danh-muc" value="Dép">
+                <input type="radio" class="loc-danh-muc" name="loc-danh-muc" value="Nón">
+                <input type="radio" class="loc-danh-muc" name="loc-danh-muc" value="Phụ kiện">
+
+                <input type="radio" class="loc-thuong-hieu" name="loc-thuong-hieu" value="tat-ca">
+                <input type="radio" class="loc-thuong-hieu" name="loc-thuong-hieu" value="Nike">
+                <input type="radio" class="loc-thuong-hieu" name="loc-thuong-hieu" value="Adidas">
+                <input type="radio" class="loc-thuong-hieu" name="loc-thuong-hieu" value="Converse">
+                <input type="radio" class="loc-thuong-hieu" name="loc-thuong-hieu" value="Puma">
+                <input type="radio" class="loc-thuong-hieu" name="loc-thuong-hieu" value="New Balance">
+              </div>
+
+              <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                <span class="fw-bold me-3 text-primary">PHÂN LOẠI:</span>
+                <button type="button" class="btn filter-category-button active" data-loc-danh-muc="tat-ca">Tất
+                  cả</button>
+                <button type="button" class="btn filter-category-button" data-loc-danh-muc="Giày">Giày</button>
+                <button type="button" class="btn filter-category-button" data-loc-danh-muc="Dép">Dép</button>
+                <button type="button" class="btn filter-category-button" data-loc-danh-muc="Nón">Nón</button>
+                <button type="button" class="btn filter-category-button" data-loc-danh-muc="Phụ kiện">Phụ kiện</button>
+              </div>
+
+              <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                <span class="fw-bold me-3 text-danger">THƯƠNG HIỆU:</span>
+                <button type="button" class="btn btn-pill-outline filter-brand-button active"
+                  data-loc-thuong-hieu="tat-ca">
+                  <span class="filter-logo"><i class="bi bi-grid-fill"></i></span>
+                  <span class="filter-text">Tất cả</span>
+                </button>
+                <button type="button" class="btn btn-pill-outline filter-brand-button" data-loc-thuong-hieu="Nike">
+                  <span class="filter-logo"><img src="assets/img/logoNike.png" alt="Nike logo"></span>
+                  <span class="filter-text">Nike</span>
+                </button>
+                <button type="button" class="btn btn-pill-outline filter-brand-button" data-loc-thuong-hieu="Adidas">
+                  <span class="filter-logo"><img src="assets/img/logoAdidas.png" alt="Adidas logo"></span>
+                  <span class="filter-text">Adidas</span>
+                </button>
+                <button type="button" class="btn btn-pill-outline filter-brand-button" data-loc-thuong-hieu="Converse">
+                  <span class="filter-logo"><img src="assets/img/logoConverse.png" alt="Converse logo"></span>
+                  <span class="filter-text">Converse</span>
+                </button>
+                <button type="button" class="btn btn-pill-outline filter-brand-button" data-loc-thuong-hieu="Puma">
+                  <span class="filter-logo"><img src="assets/img/logoPuma.png" alt="Puma logo"></span>
+                  <span class="filter-text">Puma</span>
+                </button>
+                <button type="button" class="btn btn-pill-outline filter-brand-button"
+                  data-loc-thuong-hieu="New Balance">
+                  <span class="filter-logo"><img src="assets/img/logoNewBalance.png" alt="New Balance logo"></span>
+                  <span class="filter-text">New Balance</span>
+                </button>
+              </div>
+
+              <!-- Khu vực Sắp xếp (Chuyển từ cột dọc sang đây) -->
+              <div class="d-flex flex-wrap align-items-center gap-3 pt-3 border-top">
+                <span class="fw-bold text-dark"><i class="bi bi-sort-down"></i> SẮP XẾP:</span>
+                <div class="d-flex gap-2">
+                  <select id="sap-xep-san-pham" class="form-select form-select-sm"
+                    style="width: auto; min-height: 38px; border-radius: 8px;">
+                    <option value="noi-bat">Sản phẩm nổi bật</option>
+                    <option value="gia-tang">Giá thấp đến cao</option>
+                    <option value="gia-giam">Giá cao đến thấp</option>
+                    <option value="giam-gia">Đang giảm giá</option>
+                  </select>
+
+                  <select id="loc-khoang-gia" class="form-select form-select-sm"
+                    style="width: auto; min-height: 38px; border-radius: 8px;">
+                    <option value="tat-ca">Mọi mức giá</option>
+                    <option value="duoi-2-trieu">Dưới 2.000.000đ</option>
+                    <option value="tu-2-den-3-trieu">2.000.000đ - 3.000.000đ</option>
+                    <option value="tren-3-trieu">Trên 3.000.000đ</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!-- KẾT THÚC: BỘ LỌC NGANG MỚI -->
+
+            <div id="luoi-san-pham" class="row g-3 g-lg-4"></div>
+
+            <div class="khung-xem-them mt-4">
+              <button id="nut-xem-them" class="btn btn-dark px-5 py-2 rounded-pill fw-bold" type="button">Xem thêm sản
+                phẩm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="nen-bo-loc" class="nen-bo-loc" hidden></div>
+  </main>
+
+  <!-- Giỏ hàng Offcanvas -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="khung-gio-hang">
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title">Giỏ hàng</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Đóng"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <div id="danh-sach-gio-hang" class="danh-sach-gio-hang"></div>
+      <div class="tong-gio-hang mt-auto">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span>Tổng cộng</span><strong id="tong-tien-gio-hang">0đ</strong>
+        </div>
+        <button id="nut-thanh-toan" class="btn btn-dark w-100 py-2 rounded-pill fw-bold" type="button">Thanh
+          toán</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast thông báo -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="thong-bao-nhanh" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div id="noi-dung-thong-bao" class="toast-body">Đã cập nhật.</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Đóng"></button>
+      </div>
+    </div>
+  </div>
+  <footer id="chan-trang" class="chan-trang">
+    <div class="dai-cam-ket-footer">
+      <div class="container luoi-cam-ket">
+        <div>
+          <i class="bi bi-patch-check"></i>
+          <span>Cam kết chính hãng 100%</span>
+        </div>
+        <div>
+          <i class="bi bi-arrow-repeat"></i>
+          <span>Hỗ trợ đổi hàng trong 30 ngày</span>
+        </div>
+        <div>
+          <i class="bi bi-truck"></i>
+          <span>Giao hàng toàn quốc</span>
+        </div>
+        <div>
+          <i class="bi bi-headset"></i>
+          <span>Tư vấn size nhanh qua hotline</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container noi-dung-footer">
+      <div class="cot-footer cot-thuong-hieu-footer">
+        <a class="logo-cua-hang logo-footer d-flex align-items-center gap-2" href="#">
+          <span class="ky-hieu-logo">S</span>
+          <span>
+            SoleStyle
+            <small>Only Real</small>
+          </span>
+        </a>
+        <h2>FOOTGEAR H - Only Real</h2>
+        <p>Chuyên giày thể thao, dép, nón và phụ kiện chính hãng. Hàng có sẵn, tư vấn đúng size, hỗ trợ kiểm tra trước
+          khi nhận.</p>
+        <ul class="thong-tin-cua-hang">
+          <li><i class="bi bi-building"></i> Hộ kinh doanh SoleStyle 171</li>
+          <li><i class="bi bi-geo-alt"></i> 171 Huỳnh Văn Bánh, Phường 11, Quận Phú Nhuận, TP.HCM</li>
+          <li><i class="bi bi-clock"></i> Mở cửa: 10:00 - 22:00 mỗi ngày</li>
+        </ul>
+        <div class="mang-xa-hoi">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          <a href="tel:0707717271" aria-label="Gọi hotline"><i class="bi bi-telephone-fill"></i></a>
+        </div>
+      </div>
+
+      <div class="cot-footer">
+        <h3>Hỗ trợ khách hàng</h3>
+        <ul>
+          <li><a href="#">Chính sách kiểm hàng</a></li>
+          <li><a href="#">Chính sách vận chuyển</a></li>
+          <li><a href="#">Chính sách thanh toán</a></li>
+          <li><a href="#">Chính sách bảo hành sản phẩm</a></li>
+          <li><a href="#">Chính sách đổi trả và hoàn tiền</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+        </ul>
+      </div>
+
+      <div class="cot-footer">
+        <h3>Danh mục nổi bật</h3>
+        <ul>
+          <li><button type="button" data-loc-danh-muc="Giày">Giày chính hãng</button></li>
+          <li><button type="button" data-loc-danh-muc="Dép">Dép chính hãng</button></li>
+          <li><button type="button" data-loc-danh-muc="Nón">Nón</button></li>
+          <li><button type="button" data-loc-danh-muc="Phụ kiện">Phụ kiện</button></li>
+          <li><a href="#khu-uu-dai">Thương hiệu</a></li>
+          <li><a href="#khu-san-pham">Khuyến mãi</a></li>
+        </ul>
+      </div>
+
+      <div class="cot-footer">
+        <h3>Liên hệ với chúng tôi</h3>
+        <ul class="thong-tin-lien-he-footer">
+          <li><i class="bi bi-telephone"></i> 0707 717 271</li>
+          <li><i class="bi bi-envelope"></i> solestyle.cskh@gmail.com</li>
+          <li><i class="bi bi-chat-dots"></i> Zalo / Facebook: SoleStyle</li>
+        </ul>
+        <div class="khung-ban-do">
+          <iframe title="Bản đồ cửa hàng SoleStyle"
+            src="https://maps.google.com/maps?q=171%20Hu%E1%BB%B3nh%20V%C4%83n%20B%C3%A1nh%20Ph%C3%BA%20Nhu%E1%BA%ADn%20TPHCM&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="chan-footer-duoi">
+      <div class="container">
+        <p>© 2026 SoleStyle. Giày dép chính hãng cho mọi phong cách.</p>
+        <span>Đang online: 42 | Tuần: 16.839 | Tổng truy cập: 1.754.442</span>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data/products.js"></script>
+  <script src="assets/js/core/common.js"></script>
+  <script src="assets/js/pages/products.js"></script>
+</body>
+
+</html>

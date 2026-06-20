@@ -1,0 +1,55 @@
+/* Styles cho trang chi tiết sản phẩm */
+.product-detail-meta {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+}
+.product-detail-meta h2 {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+.danh-sach-thong-so {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.danh-sach-thong-so li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #344055;
+}
+.danh-sach-thong-so strong {
+  color: #111827;
+}
+.loi-ich-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.loi-ich-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #374151;
+}
+.loi-ich-list li i {
+  color: #0f766e;
+  min-width: 24px;
+}
+.review-item {
+  padding-left: 0.5rem;
+}
+.review-item .fw-bold {
+  color: #111827;
+}
+.review-item small {
+  font-size: 0.8rem;
+}
