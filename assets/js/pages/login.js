@@ -1,5 +1,16 @@
+/**
+ * login.js - Xử lý trang đăng nhập (login.html)
+ * 
+ * Nội dung:
+ * - Hiển thị/ẩn mật khẩu (toggle)
+ * - Kiểm tra email hợp lệ, mật khẩu ≥ 5 ký tự
+ * - So khớp với danh sách tài khoản trong localStorage (soleStyleTaiKhoan)
+ * - Hỗ trợ admin cứng: admin@admin.com / admin
+ * - Chuyển hướng đến trang trước đó hoặc admin.html
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
-    // ── 1. LẤY CÁC PHẦN TỬ DOM GỐC TỪ LOGIN.HTML ──
+    // ── Lấy các phần tử DOM ──
     const toggleBtn = document.getElementById('togglePassword');
     const passwordInput = document.getElementById('mat-khau-dang-nhap');
     const form = document.getElementById('bieu-mau-dang-nhap');
@@ -11,12 +22,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const notiContent = document.getElementById('thong-bao-noi-dung');
     const btnLogin = document.getElementById('btnDangNhap');
 
-    // ── 2. XỬ LÝ ẨN / HIỆN MẬT KHẨU (CÓ PHÒNG HỜ LỖI) ──
+    // ── Xử lý ẩn / hiện mật khẩu ──
     if (toggleBtn && passwordInput) {
         toggleBtn.addEventListener('click', function () {
+            // Đổi type giữa password và text
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
 
+            // Đổi icon (mắt)
             const icon = this.querySelector('i');
             if (icon) {
                 icon.classList.toggle('bi-eye');
@@ -25,23 +38,23 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ── 3. XỬ LÝ SỰ KIỆN KHI BẤM NÚT ĐĂNG NHẬP ──
+    // ── Xử lý khi submit form ──
     if (form) {
         form.addEventListener('submit', function (e) {
-            e.preventDefault(); // Ngăn chặn tải lại trang ngay lập tức
+            e.preventDefault(); // Không reload trang
 
             const email = emailInput ? emailInput.value.trim() : "";
             const pass = passInput ? passInput.value : "";
             let hasError = false;
 
-            // Reset tất cả các trạng thái lỗi cũ trước khi kiểm tra mới
+            // Reset các thông báo lỗi cũ
             if (emailInput) emailInput.classList.remove('is-invalid');
             if (passInput) passInput.classList.remove('is-invalid');
             if (emailFeedback) emailFeedback.classList.remove('show');
             if (passFeedback) passFeedback.classList.remove('show');
             if (notification) notification.className = 'thong-bao-bieu-mau';
 
-            // Kiểm tra tính hợp lệ của Email
+            // Kiểm tra email
             if (!email) {
                 if (emailInput) emailInput.classList.add('is-invalid');
                 if (emailFeedback) {
@@ -58,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 hasError = true;
             }
 
-            // Kiểm tra tính hợp lệ của Mật khẩu
+            // Kiểm tra mật khẩu
             if (!pass) {
                 if (passInput) passInput.classList.add('is-invalid');
                 if (passFeedback) {
@@ -69,13 +82,13 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (pass.length < 5) {
                 if (passInput) passInput.classList.add('is-invalid');
                 if (passFeedback) {
-                    passFeedback.textContent = 'Mật khẩu tối thiểu 5 ký tự.';
+                    passFeedback.textContent = 'Mật khẩu không chính xác.';
                     passFeedback.classList.add('show');
                 }
                 hasError = true;
             }
 
-            // Nếu phát hiện có lỗi nhập liệu -> Dừng lại và hiện thông báo đỏ
+            // Nếu có lỗi, hiện thông báo và dừng
             if (hasError) {
                 if (notification && notiContent) {
                     notification.className = 'thong-bao-bieu-mau show error';
@@ -84,24 +97,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // ── 4. XỬ LÝ ĐĂNG NHẬP THỰC TẾ (SO KHỚP LOCALSTORAGE) ──
+            // ── Nếu không lỗi, tiến hành đăng nhập ──
             if (btnLogin) {
                 btnLogin.classList.add('loading');
                 btnLogin.disabled = true;
             }
 
+            // Giả lập gọi API (setTimeout)
             setTimeout(() => {
                 const emailLogin = email.toLowerCase();
 
-                // Đọc danh sách tài khoản người dùng đã đăng ký
+                // Đọc danh sách tài khoản từ localStorage
                 const danhSachTaiKhoan = JSON.parse(localStorage.getItem("soleStyleTaiKhoan")) || [];
 
-                // Tìm kiếm tài khoản trùng khớp cả email và mật khẩu
+                // Tìm tài khoản khớp email và mật khẩu
                 const taiKhoanHopLe = danhSachTaiKhoan.find(tk =>
                     tk.email && tk.email.toLowerCase() === emailLogin && tk.matKhau === pass
                 );
 
-                // Tài khoản Admin dùng để test nhanh hệ thống quản trị
+                // Tài khoản admin cứng
                 const isAdmin = (emailLogin === "admin@admin.com" && pass === "admin");
 
                 if (taiKhoanHopLe || isAdmin) {
@@ -114,36 +128,31 @@ document.addEventListener("DOMContentLoaded", function () {
                         maUser = "admin";
                         sessionStorage.setItem("is_admin", "true");
                     } else {
-                        // Tự động bóc tách tên (hỗ trợ cả trường hoTen hoặc name tùy thuộc file Đăng ký của bạn)
                         tenHienThi = taiKhoanHopLe.hoTen || taiKhoanHopLe.name || "Người dùng";
                         maUser = taiKhoanHopLe.ma || taiKhoanHopLe.id || Date.now();
                         dienThoaiUser = taiKhoanHopLe.dienThoai || "";
                     }
 
-                    // Đóng gói thông tin đúng chuẩn cấu trúc mà file common.js đang yêu cầu
+                    // Lưu thông tin user vào localStorage (để dùng chung với các trang khác)
                     const userObj = {
                         ma: maUser,
                         hoTen: tenHienThi,
                         email: email,
                         dienThoai: dienThoaiUser
                     };
-
-                    // Lưu thông tin phiên đăng nhập vào localStorage
                     localStorage.setItem("soleStyleNguoiDung", JSON.stringify(userObj));
 
-                    // Hiển thị khung thông báo Xanh (Thành công) dựa trên Class gốc của dự án
+                    // Hiển thị thông báo thành công
                     if (notification && notiContent) {
                         notification.className = 'thong-bao-bieu-mau show success';
                         notiContent.textContent = 'Đăng nhập thành công! Đang chuyển hướng...';
                     }
 
-                    // Đợi hiệu ứng thông báo chạy xong rồi chuyển hướng trang
+                    // Chuyển hướng sau 1 giây
                     setTimeout(() => {
-                        // Nếu là Admin thì chuyển thẳng tới trang quản trị
                         if (isAdmin) {
                             window.location.href = "admin.html";
                         } else {
-                            // Nếu là khách hàng bình thường thì về trang chủ hoặc trang trước đó
                             const params = new URLSearchParams(window.location.search);
                             const nextUrl = params.get("next") || "index.html";
                             window.location.href = nextUrl;
@@ -151,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }, 1000);
 
                 } else {
-                    // Trường hợp sai thông tin Đăng nhập
+                    // Sai email hoặc mật khẩu
                     if (btnLogin) {
                         btnLogin.classList.remove('loading');
                         btnLogin.disabled = false;

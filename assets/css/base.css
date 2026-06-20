@@ -1043,14 +1043,11 @@ a {
 
 .hanh-dong-card-san-pham {
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr);
-  /* giảm từ 54px */
+  grid-template-columns: 44px minmax(0, 1fr); 
   align-items: center;
-  gap: 8px;
-  /* giảm từ 12px */
+  gap: 8px; 
   margin-top: 2px;
-  padding: 5px 6px;
-  /* giảm từ 8px */
+  padding: 5px 6px; 
   border-radius: 999px;
   background: #fff;
   box-shadow: 0 8px 20px rgba(17, 24, 39, 0.08);
@@ -1058,8 +1055,7 @@ a {
 
 .nut-gio-card,
 .nut-mua-ngay-card {
-  min-height: 44px;
-  /* giảm từ 54px */
+  min-height: 44px; 
   border: 0;
   border-radius: 999px;
   text-decoration: none;
@@ -1067,13 +1063,11 @@ a {
 
 .nut-gio-card {
   display: grid;
-  width: 44px;
-  /* giảm từ 54px */
+  width: 44px; 
   place-items: center;
   color: #374151;
   background: #eef2f8;
-  font-size: 1rem;
-  /* giảm từ 1.2rem */
+  font-size: 1rem; 
   transition: background 0.2s, color 0.2s;
 }
 
@@ -1086,13 +1080,11 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 14px;
-  /* giảm từ 18px */
+  padding: 0 14px; 
   color: #fff;
   background: linear-gradient(135deg, #ff7417, #ff914d);
   box-shadow: 0 6px 16px rgba(255, 116, 23, 0.25);
-  font-size: 0.85rem;
-  /* giảm từ 1rem */
+  font-size: 0.85rem; 
   font-weight: 900;
   text-align: center;
   transition: filter 0.2s;
@@ -1154,8 +1146,7 @@ a {
    ẨN NÚT ĐÓNG BỘ LỌC TRÊN MÁY TÍNH (PC)
 ================================================== */
 #nut-dong-bo-loc {
-  display: none !important;
-  /* Mặc định giấu đi trên màn hình lớn */
+  display: none !important; 
 }
 
 /* Chỉ hiển thị lại khi màn hình nhỏ (Điện thoại, Tablet) */
