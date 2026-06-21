@@ -1,17 +1,3 @@
-/**
- * profile.js - Xử lý trang hồ sơ cá nhân (profile.html)
- * 
- * Nội dung chính:
- * - Kiểm tra đăng nhập, nếu chưa đăng nhập -> chuyển đến login
- * - Hiển thị thông tin user (tên, avatar, email)
- * - Quản lý các tab (Tổng quan, Đơn hàng, Địa chỉ, Điểm thưởng, Thông báo)
- * - Quản lý sổ địa chỉ (CRUD, đặt mặc định)
- * - Xem lịch sử đơn hàng theo trạng thái
- * - Xem lịch sử điểm thưởng (tích lũy / sử dụng)
- * - Thông báo từ file JSON
- * - Đăng xuất (modal xác nhận)
- */
-
 document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     // 1. KIỂM TRA ĐĂNG NHẬP

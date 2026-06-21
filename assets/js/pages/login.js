@@ -1,14 +1,3 @@
-/**
- * login.js - Xử lý trang đăng nhập (login.html)
- * 
- * Nội dung:
- * - Hiển thị/ẩn mật khẩu (toggle)
- * - Kiểm tra email hợp lệ, mật khẩu ≥ 5 ký tự
- * - So khớp với danh sách tài khoản trong localStorage (soleStyleTaiKhoan)
- * - Hỗ trợ admin cứng: admin@admin.com / admin
- * - Chuyển hướng đến trang trước đó hoặc admin.html
- */
-
 document.addEventListener("DOMContentLoaded", function () {
     // ── Lấy các phần tử DOM ──
     const toggleBtn = document.getElementById('togglePassword');
@@ -22,14 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const notiContent = document.getElementById('thong-bao-noi-dung');
     const btnLogin = document.getElementById('btnDangNhap');
 
-    // ── Xử lý ẩn / hiện mật khẩu ──
     if (toggleBtn && passwordInput) {
         toggleBtn.addEventListener('click', function () {
-            // Đổi type giữa password và text
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
 
-            // Đổi icon (mắt)
             const icon = this.querySelector('i');
             if (icon) {
                 icon.classList.toggle('bi-eye');
@@ -38,23 +24,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ── Xử lý khi submit form ──
     if (form) {
         form.addEventListener('submit', function (e) {
-            e.preventDefault(); // Không reload trang
+            e.preventDefault(); 
 
             const email = emailInput ? emailInput.value.trim() : "";
             const pass = passInput ? passInput.value : "";
             let hasError = false;
 
-            // Reset các thông báo lỗi cũ
             if (emailInput) emailInput.classList.remove('is-invalid');
             if (passInput) passInput.classList.remove('is-invalid');
             if (emailFeedback) emailFeedback.classList.remove('show');
             if (passFeedback) passFeedback.classList.remove('show');
             if (notification) notification.className = 'thong-bao-bieu-mau';
 
-            // Kiểm tra email
             if (!email) {
                 if (emailInput) emailInput.classList.add('is-invalid');
                 if (emailFeedback) {
@@ -71,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 hasError = true;
             }
 
-            // Kiểm tra mật khẩu
             if (!pass) {
                 if (passInput) passInput.classList.add('is-invalid');
                 if (passFeedback) {
@@ -88,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 hasError = true;
             }
 
-            // Nếu có lỗi, hiện thông báo và dừng
             if (hasError) {
                 if (notification && notiContent) {
                     notification.className = 'thong-bao-bieu-mau show error';
@@ -97,25 +78,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // ── Nếu không lỗi, tiến hành đăng nhập ──
             if (btnLogin) {
                 btnLogin.classList.add('loading');
                 btnLogin.disabled = true;
             }
 
-            // Giả lập gọi API (setTimeout)
             setTimeout(() => {
                 const emailLogin = email.toLowerCase();
 
-                // Đọc danh sách tài khoản từ localStorage
                 const danhSachTaiKhoan = JSON.parse(localStorage.getItem("soleStyleTaiKhoan")) || [];
 
-                // Tìm tài khoản khớp email và mật khẩu
                 const taiKhoanHopLe = danhSachTaiKhoan.find(tk =>
                     tk.email && tk.email.toLowerCase() === emailLogin && tk.matKhau === pass
                 );
 
-                // Tài khoản admin cứng
                 const isAdmin = (emailLogin === "admin@admin.com" && pass === "admin");
 
                 if (taiKhoanHopLe || isAdmin) {
@@ -133,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         dienThoaiUser = taiKhoanHopLe.dienThoai || "";
                     }
 
-                    // Lưu thông tin user vào localStorage (để dùng chung với các trang khác)
                     const userObj = {
                         ma: maUser,
                         hoTen: tenHienThi,
@@ -142,13 +117,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     };
                     localStorage.setItem("soleStyleNguoiDung", JSON.stringify(userObj));
 
-                    // Hiển thị thông báo thành công
                     if (notification && notiContent) {
                         notification.className = 'thong-bao-bieu-mau show success';
                         notiContent.textContent = 'Đăng nhập thành công! Đang chuyển hướng...';
                     }
 
-                    // Chuyển hướng sau 1 giây
                     setTimeout(() => {
                         if (isAdmin) {
                             window.location.href = "admin.html";
@@ -160,7 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     }, 1000);
 
                 } else {
-                    // Sai email hoặc mật khẩu
                     if (btnLogin) {
                         btnLogin.classList.remove('loading');
                         btnLogin.disabled = false;
