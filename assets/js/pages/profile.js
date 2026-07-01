@@ -1,7 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // ==========================================
-    // 1. KIỂM TRA ĐĂNG NHẬP
-    // ==========================================
+document.addEventListener("DOMContentLoaded", () => { 
     function getCurrentUserFromSession() {
         if (typeof nguoiDungHienTai !== "undefined" && nguoiDungHienTai) {
             return nguoiDungHienTai;
@@ -16,16 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const currentUser = getCurrentUserFromSession();
     const userName = currentUser?.hoTen || currentUser?.name || sessionStorage.getItem("user_name") || currentUser?.email;
-
-    // Nếu chưa đăng nhập, chuyển về login
+ 
     if (!currentUser) {
         window.location.href = "./login.html";
         return;
     }
-
-    // ==========================================
-    // 2. HIỂN THỊ THÔNG TIN USER
-    // ==========================================
+ 
     const nameElement = document.getElementById("profileName");
     if (nameElement) nameElement.textContent = userName;
 
@@ -39,10 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const emailElement = document.getElementById("profileEmail");
         if (emailElement) emailElement.textContent = currentUser.email || currentUser.account || "";
     }
-
-    // ==========================================
-    // 3. XỬ LÝ ĐĂNG XUẤT (Modal tùy chỉnh)
-    // ==========================================
+ 
     const logoutBtn = document.getElementById("logoutBtn");
     const logoutModal = document.getElementById("logoutModalOverlay");
     const cancelLogoutBtn = document.getElementById("cancelLogoutBtn");
@@ -64,8 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (confirmLogoutBtn) {
-            confirmLogoutBtn.addEventListener("click", () => {
-                // Gọi hàm đăng xuất (nếu có trong common) hoặc tự xóa localStorage
+            confirmLogoutBtn.addEventListener("click", () => { 
                 if (typeof dangXuatTaiKhoan === "function") {
                     dangXuatTaiKhoan();
                     window.location.href = "./index.html";
@@ -76,10 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     }
-
-    // ==========================================
-    // 4. CHUYỂN TAB CHÍNH
-    // ==========================================
+ 
     const navItems = document.querySelectorAll(".nav-item[data-target]");
     const tabPanes = document.querySelectorAll(".tab-pane");
     const triggerLinks = document.querySelectorAll(".nav-trigger");
@@ -134,11 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 scrollToContent();
             }
         });
-    });
-
-    // ==========================================
-    // 5. XỬ LÝ TAB CON (Đơn hàng, Điểm thưởng)
-    // ==========================================
+    }); 
     const fptTabs = document.querySelectorAll(".fpt-tab-item");
     fptTabs.forEach((tab) => {
         tab.addEventListener("click", function (e) {
@@ -159,11 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         });
-    });
-
-    // ==========================================
-    // 6. ĐIỂM THƯỞNG
-    // ==========================================
+    }); 
     function getScopedStorageKey(baseKey) {
         const user = getCurrentUserFromSession();
         return user?.ma ? `${baseKey}_${user.ma}` : baseKey;
@@ -227,15 +205,11 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         }).join("");
     }
-
-    // Gán sự kiện cho các tab điểm thưởng
+ 
     document.querySelector('[data-target-pane="#point-all"]')?.addEventListener("click", () => renderRewardHistory("all"));
     document.querySelector('[data-target-pane="#point-earned"]')?.addEventListener("click", () => renderRewardHistory("earn"));
     document.querySelector('[data-target-pane="#point-used"]')?.addEventListener("click", () => renderRewardHistory("used"));
-
-    // ==========================================
-    // 7. THÔNG BÁO (load từ JSON)
-    // ==========================================
+ 
     async function fetchNotifications() {
         try {
             const response = await fetch("./assets/json/notifications.json");
@@ -269,11 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    fetchNotifications();
-
-    // ==========================================
-    // 8. TỰ ĐỘNG CHUYỂN TAB ĐƠN HÀNG TRÊN MOBILE
-    // ==========================================
+    fetchNotifications(); 
     function checkResponsiveDefaultTab() {
         if (window.innerWidth < 992) {
             const activePane = document.querySelector(".tab-pane.active");
@@ -291,10 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(checkResponsiveDefaultTab, 150);
     });
-
-    // ==========================================
-    // 9. QUẢN LÝ SỔ ĐỊA CHỈ
-    // ==========================================
+ 
     const LOCAL_STORAGE_ADDR_KEY = getScopedStorageKey("tht_user_addresses");
     const addressModalOverlay = document.getElementById("addressModalOverlay");
     const emptyAddAddressBtn = document.getElementById("emptyAddAddressBtn");
@@ -410,8 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
             closeAddressModal();
         });
     }
-
-    // Hàm đặt mặc định (gọi từ inline onclick)
+ 
     window.setDefaultAddress = function (id) {
         addresses = addresses.map((addr) => ({
             ...addr,
@@ -420,14 +386,12 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem(LOCAL_STORAGE_ADDR_KEY, JSON.stringify(addresses));
         renderAddresses();
     };
-
-    // Hàm xóa địa chỉ (mở modal xác nhận)
+ 
     window.deleteAddress = function (id) {
         addressIdToDelete = id;
         deleteAddressModalOverlay.classList.add("show");
     };
-
-    // Modal xác nhận xóa địa chỉ
+ 
     const deleteAddressModalOverlay = document.getElementById("deleteAddressModalOverlay");
     const closeDeleteModalIcon = document.getElementById("closeDeleteModalIcon");
     const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
@@ -462,10 +426,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     renderAddresses();
-
-    // ==========================================
-    // 10. HIỂN THỊ ĐƠN HÀNG
-    // ==========================================
+ 
     function formatMoney(value) {
         let number = Number(String(value ?? 0).replace(/,/g, ""));
         if (!Number.isFinite(number)) number = 0;
@@ -543,8 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
     }
-
-    // Xem chi tiết đơn hàng (modal)
+ 
     window.viewOrderDetails = function (orderCode) {
         const orders = getCurrentUserOrders();
         const order = orders.find((o) => (o.ma || o.code) === orderCode);
@@ -599,8 +559,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function loadAndRenderOrders() {
         const orders = getCurrentUserOrders();
-
-        // Phần Tổng quan: hiển thị 2 đơn hàng gần nhất
+ 
         const overviewSection = document.querySelector("#tab-overview .content-block:nth-child(1)");
         if (overviewSection && orders.length > 0) {
             const recentOrders = orders.slice(0, 2);
@@ -618,8 +577,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.querySelector('.nav-item[data-target="#tab-orders"]').click();
             });
         }
-
-        // Các tab đơn hàng theo trạng thái
+ 
         const panes = {
             all: document.getElementById("order-all"),
             processing: document.getElementById("order-processing"),
@@ -662,10 +620,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pane.innerHTML = items.length > 0 ? items.map((order) => buildOrderCard(order)).join("") : "";
         });
     }
-
-    // ==========================================
-    // 11. KHỞI CHẠY TẤT CẢ
-    // ==========================================
+ 
     renderAvailablePoints();
     renderRewardHistory("all");
     renderRewardHistory("earn");

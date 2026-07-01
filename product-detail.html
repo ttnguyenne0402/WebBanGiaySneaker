@@ -1,19 +1,40 @@
 <!doctype html>
 <html lang="vi">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Chi tiết sản phẩm - SoleStyle</title>
+  <title>Chi tiết sản phẩm - SoleStyle</title> 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components/header.css">
   <link rel="stylesheet" href="assets/css/components/footer.css">
-  <link rel="stylesheet" href="assets/css/components/breadcrumb.css">
+  <link rel="stylesheet" href="assets/css/components/breadcrumb.css"> 
   <link rel="stylesheet" href="assets/css/pages/product-detail.css">
 </head>
 
-<body data-page="product-detail" class="trang-phu">
+<body data-page="product-detail" class="trang-phu"> 
+  <div class="floating-contact-wrapper">
+    <a href="tel:0368068274" class="floating-contact-btn btn-phone" aria-label="Gọi điện thoại">
+      <i class="bi bi-telephone-fill"></i>
+      <div class="ring"></div>
+      <div class="ring2"></div>
+    </a>
+    <a href="#" id="messenger-chat-toggle" class="floating-contact-btn btn-zalo" aria-label="Chat với AI">
+      <i class="bi bi-messenger"></i>
+      <div class="ring"></div>
+      <div class="ring2"></div>
+    </a>
+  </div>
+  <div id="chat-box">
+    <div class="chat-header">
+      <span>Chat AI Hỗ Trợ</span>
+      <button id="chat-close">✖</button>
+    </div>
+    <iframe src="https://www.chatbase.co/chatbot-iframe/L4mRTlZojOYt5UbMKaqWi" width="100%" height="100%" frameborder="0"
+      allow="clipboard-write; microphone"></iframe>
+  </div> 
   <header class="dau-trang-cua-hang">
     <div class="dai-loi-ich">
       <div class="container noi-dung-dai-loi-ich">
@@ -22,23 +43,20 @@
         <span><i class="bi bi-geo-alt-fill"></i> 171 Huỳnh Văn Bánh, Phú Nhuận, TP.HCM</span>
       </div>
     </div>
-
     <nav id="thanh-dieu-huong" class="thanh-chinh-dau-trang navbar">
       <div class="container noi-dung-header">
-        <a class="logo-cua-hang d-flex align-items-center gap-2" href="#">
+        <a class="logo-cua-hang d-flex align-items-center gap-2" href="index.html">
           <span class="ky-hieu-logo">S</span>
           <span>
             SoleStyle
             <small>Only Real</small>
           </span>
         </a>
-
         <form id="bieu-mau-tim-kiem-dau-trang" class="thanh-tim-kiem" role="search">
           <i class="bi bi-search"></i>
           <input id="o-tim-kiem" type="search" placeholder="Tìm giày, dép, nón, phụ kiện..." aria-label="Tìm sản phẩm">
           <button type="submit" aria-label="Tìm kiếm"><i class="bi bi-arrow-right"></i></button>
         </form>
-
         <div class="hanh-dong-header">
           <div id="hanh-dong-khach" class="nhom-tai-khoan">
             <a class="btn btn-outline-dark nut-dang-nhap" href="login.html" aria-label="Đăng nhập">
@@ -46,7 +64,6 @@
               <span>Đăng nhập</span>
             </a>
           </div>
-
           <div id="hanh-dong-nguoi-dung" class="dropdown d-none">
             <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
               aria-expanded="false">
@@ -55,13 +72,10 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><span id="email-nguoi-dung" class="dropdown-item-text text-secondary"></span></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
+              <li><hr class="dropdown-divider"></li>
               <li><button id="nut-dang-xuat" class="dropdown-item" type="button">Đăng xuất</button></li>
             </ul>
           </div>
-
           <button id="nut-mo-gio-hang" class="btn btn-dark position-relative nut-gio-hang" type="button"
             data-bs-toggle="offcanvas" data-bs-target="#khung-gio-hang" aria-controls="khung-gio-hang">
             <i class="bi bi-bag"></i>
@@ -72,7 +86,6 @@
         </div>
       </div>
     </nav>
-
     <nav id="thanh-danh-muc" class="thanh-dieu-huong thanh-danh-muc navbar navbar-expand-lg sticky-top">
       <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#khung-menu"
@@ -88,52 +101,43 @@
         </div>
       </div>
     </nav>
-  </header>
+  </header> 
   <nav class="product-detail-breadcrumb" aria-label="Đường dẫn thanh toán">
     <div class="container" style="max-width: 950px">
       <a href="./index.html">Trang chủ</a>
       <i class="bi bi-chevron-right"></i>
-
       <a href="./products.html">Sản phẩm</a>
       <i class="bi bi-chevron-right"></i>
       <span id="breadcrumb-name" class="fw-medium text-dark">Chi tiết sản phẩm</span>
     </div>
-  </nav>
+  </nav> 
   <main class="section-trang py-4 bg-light">
     <div class="container">
-
       <div id="thong-bao-trang" class="thong-bao-bieu-mau loi d-none mb-3"></div>
 
       <section class="detail-shell bg-white p-4 p-lg-5 rounded-4 shadow-sm" id="productDetail">
         <div class="row g-5 align-items-start">
-
+ 
           <div class="col-lg-5">
             <div class="gallery-wrap position-relative">
-              <span id="nhan-giam-gia-chi-tiet"
-                class="nhan-giam-gia position-absolute top-0 start-0 m-3 z-3 fs-6 px-3 py-2 d-none"></span>
-              <div class="main-img-box text-center bg-light"
-                style="min-height: 450px; display: flex; align-items: center; justify-content: center;">
-                <img id="anh-chi-tiet" src="" alt="Ảnh sản phẩm" class="img-fluid"
-                  style="max-height: 400px; object-fit: contain;">
+              <span id="nhan-giam-gia-chi-tiet" class="nhan-giam-gia position-absolute top-0 start-0 m-3 z-3 fs-6 px-3 py-2 d-none"></span>
+              <div class="main-img-box text-center bg-light" style="min-height: 450px; display: flex; align-items: center; justify-content: center;">
+                <img id="anh-chi-tiet" src="" alt="Ảnh sản phẩm" class="img-fluid" style="max-height: 400px; object-fit: contain;">
               </div>
             </div>
           </div>
-
+ 
           <div class="col-lg-7">
             <div class="info-panel">
               <p id="nhan-chi-tiet" class="chu-nho text-secondary mb-2 fw-bold text-uppercase"></p>
               <h1 id="ten-chi-tiet" class="product-title fs-3 fw-bold mb-3 text-dark">Tên sản phẩm</h1>
-
-              <div id="danh-gia-chi-tiet"
-                class="rating-row d-flex align-items-center gap-2 mb-3 text-warning fw-medium"></div>
-
+              <div id="danh-gia-chi-tiet" class="rating-row d-flex align-items-center gap-2 mb-3 text-warning fw-medium"></div>
               <div class="price-row d-flex align-items-end gap-3 mb-4 pb-3 border-bottom">
                 <strong id="gia-chi-tiet" class="price-tag fs-2 text-danger fw-bolder"></strong>
                 <del id="gia-cu-chi-tiet" class="original-price fs-5 text-secondary mb-1"></del>
               </div>
-
               <p id="mo-ta-chi-tiet" class="mo-ta-chi-tiet text-secondary mb-4 lh-lg"></p>
-
+ 
               <div class="vung-lua-chon mb-3">
                 <div class="dau-lua-chon d-flex justify-content-between mb-2">
                   <label class="fw-bold">MÀU SẮC:</label>
@@ -141,7 +145,7 @@
                 </div>
                 <div id="nhom-mau-sac" class="nhom-mau-sac d-flex flex-wrap gap-2"></div>
               </div>
-
+ 
               <div class="vung-lua-chon mb-3">
                 <div class="dau-lua-chon d-flex justify-content-between mb-2">
                   <label class="fw-bold">KÍCH THƯỚC:</label>
@@ -149,56 +153,31 @@
                 </div>
                 <div id="nhom-kich-thuoc" class="nhom-kich-thuoc d-flex flex-wrap gap-2"></div>
               </div>
-
+ 
               <div class="vung-lua-chon mb-4">
                 <label class="form-label fw-bold mb-2">SỐ LƯỢNG:</label>
                 <div class="chon-so-luong d-inline-flex border rounded-3 overflow-hidden">
-                  <button id="nut-giam-so-luong" class="btn btn-light border-0 px-3 py-2" type="button"
-                    aria-label="Giảm"><i class="bi bi-dash"></i></button>
-                  <input id="so-luong-mua" class="form-control text-center border-0 fw-bold bg-white"
-                    style="width: 60px;" type="number" value="1" min="1" max="10" readonly>
-                  <button id="nut-tang-so-luong" class="btn btn-light border-0 px-3 py-2" type="button"
-                    aria-label="Tăng"><i class="bi bi-plus"></i></button>
+                  <button id="nut-giam-so-luong" class="btn btn-light border-0 px-3 py-2" type="button" aria-label="Giảm"><i class="bi bi-dash"></i></button>
+                  <input id="so-luong-mua" class="form-control text-center border-0 fw-bold bg-white" style="width: 60px;" type="number" value="1" min="1" max="10" readonly>
+                  <button id="nut-tang-so-luong" class="btn btn-light border-0 px-3 py-2" type="button" aria-label="Tăng"><i class="bi bi-plus"></i></button>
                 </div>
               </div>
 
               <div id="loi-lua-chon" class="thong-bao-loi text-danger fw-medium mb-3 d-none"></div>
-
+ 
               <div class="action-row d-flex flex-wrap gap-3 mb-5">
-                <button id="nut-mua-ngay" class="btn btn-danger btn-lg flex-fill rounded-pill fw-bold"
-                  style="min-height: 54px;" type="button">
+                <button id="nut-mua-ngay" class="btn btn-danger btn-lg flex-fill rounded-pill fw-bold" style="min-height: 54px;" type="button">
                   <i class="bi bi-lightning-charge me-2"></i> Mua ngay
                 </button>
-                <button id="nut-them-vao-gio" class="btn btn-outline-dark btn-lg flex-fill rounded-pill fw-bold"
-                  style="min-height: 54px;" type="button">
+                <button id="nut-them-vao-gio" class="btn btn-outline-dark btn-lg flex-fill rounded-pill fw-bold" style="min-height: 54px;" type="button">
                   <i class="bi bi-bag-plus me-2"></i> Thêm vào giỏ
                 </button>
               </div>
-
-              <div class="perks-strip row g-3 mb-5 py-4 border-top border-bottom text-center">
-                <div class="col-3 perk-item">
-                  <i class="bi bi-truck fs-3 text-primary"></i>
-                  <div class="small fw-bold mt-2">Giao tốc hành</div>
-                </div>
-                <div class="col-3 perk-item">
-                  <i class="bi bi-arrow-repeat fs-3 text-success"></i>
-                  <div class="small fw-bold mt-2">Đổi trả 30 ngày</div>
-                </div>
-                <div class="col-3 perk-item">
-                  <i class="bi bi-shield-check fs-3 text-info"></i>
-                  <div class="small fw-bold mt-2">Chính hãng</div>
-                </div>
-                <div class="col-3 perk-item">
-                  <i class="bi bi-credit-card fs-3 text-warning"></i>
-                  <div class="small fw-bold mt-2">Thanh toán an toàn</div>
-                </div>
-              </div>
-
+ 
               <div class="accordion product-accordion" id="productAccordion">
                 <div class="accordion-item border-0 border-bottom">
                   <h2 class="accordion-header">
-                    <button class="accordion-button bg-transparent fw-bold px-0 text-dark shadow-none fs-5"
-                      type="button" data-bs-toggle="collapse" data-bs-target="#accSpecs">
+                    <button class="accordion-button bg-transparent fw-bold px-0 text-dark shadow-none fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#accSpecs">
                       <i class="bi bi-list-ul me-2"></i> Thông số kỹ thuật
                     </button>
                   </h2>
@@ -206,44 +185,28 @@
                     <div class="accordion-body px-0 pt-3 pb-4">
                       <table class="table table-striped table-bordered spec-table mb-0">
                         <tbody>
-                          <tr>
-                            <th style="width: 35%;" class="bg-light">Thương hiệu</th>
-                            <td id="thuong-hieu-chi-tiet"></td>
-                          </tr>
-                          <tr>
-                            <th class="bg-light">Danh mục</th>
-                            <td id="danh-muc-chi-tiet"></td>
-                          </tr>
-                          <tr>
-                            <th class="bg-light">Đối tượng</th>
-                            <td id="doi-tuong-chi-tiet"></td>
-                          </tr>
-                          <tr>
-                            <th class="bg-light">Loại sản phẩm</th>
-                            <td id="loai-chi-tiet"></td>
-                          </tr>
-                          <tr>
-                            <th class="bg-light">Trạng thái</th>
-                            <td id="ton-kho-chi-tiet"></td>
-                          </tr>
+                          <tr><th style="width: 35%;" class="bg-light">Thương hiệu</th><td id="thuong-hieu-chi-tiet"></td></tr>
+                          <tr><th class="bg-light">Danh mục</th><td id="danh-muc-chi-tiet"></td></tr>
+                          <tr><th class="bg-light">Đối tượng</th><td id="doi-tuong-chi-tiet"></td></tr>
+                          <tr><th class="bg-light">Loại sản phẩm</th><td id="loai-chi-tiet"></td></tr>
+                          <tr><th class="bg-light">Trạng thái</th><td id="ton-kho-chi-tiet"></td></tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
               </div>
+ 
               <div class="accordion product-accordion mt-4" id="reviewAccordion">
                 <div class="accordion-item border-0 border-bottom">
                   <h2 class="accordion-header">
-                    <button class="accordion-button collapsed bg-transparent fw-bold px-0 text-dark shadow-none fs-5"
-                      type="button" data-bs-toggle="collapse" data-bs-target="#accReviews">
+                    <button class="accordion-button collapsed bg-transparent fw-bold px-0 text-dark shadow-none fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#accReviews">
                       <i class="bi bi-star me-2"></i> Đánh giá sản phẩm
                     </button>
                   </h2>
                   <div id="accReviews" class="accordion-collapse collapse" data-bs-parent="#reviewAccordion">
                     <div class="accordion-body px-0 pt-3 pb-4">
-                      <div id="reviewList" class="d-flex flex-column gap-3">
-                      </div>
+                      <div id="reviewList" class="d-flex flex-column gap-3"></div>
                     </div>
                   </div>
                 </div>
@@ -251,50 +214,43 @@
             </div>
           </div>
         </div>
-      </section>
-
+      </section> 
       <section class="related-section mt-5 pt-4">
         <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
           <h2 class="fs-4 fw-bold mb-0">Sản phẩm liên quan</h2>
-          <a href="products.html" class="text-decoration-none fw-bold text-primary">Xem tất cả <i
-              class="bi bi-arrow-right"></i></a>
+          <a href="products.html" class="text-decoration-none fw-bold text-primary">Xem tất cả <i class="bi bi-arrow-right"></i></a>
         </div>
-
         <div class="row g-3 g-lg-4" id="luoi-san-pham">
           <div class="col-12 text-center text-muted py-4">
             <p>Đang cập nhật sản phẩm liên quan...</p>
           </div>
         </div>
       </section>
-
     </div>
   </main>
-
+ 
   <div class="offcanvas offcanvas-end" tabindex="-1" id="khung-gio-hang">
     <div class="offcanvas-header">
-      <h2 class="offcanvas-title">Giỏ hàng</h2><button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-        aria-label="Đóng"></button>
+      <h2 class="offcanvas-title">Giỏ hàng</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Đóng"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
       <div id="danh-sach-gio-hang" class="danh-sach-gio-hang"></div>
       <div class="tong-gio-hang mt-auto">
-        <div class="d-flex justify-content-between align-items-center mb-3"><span>Tổng cộng</span><strong
-            id="tong-tien-gio-hang">0đ</strong></div>
+        <div class="d-flex justify-content-between align-items-center mb-3"><span>Tổng cộng</span><strong id="tong-tien-gio-hang">0đ</strong></div>
         <button id="nut-thanh-toan" class="btn btn-dark w-100" type="button">Thanh toán</button>
       </div>
     </div>
   </div>
-
+ 
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="thong-bao-nhanh" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite"
-      aria-atomic="true">
+    <div id="thong-bao-nhanh" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
       <div class="d-flex">
-        <div id="noi-dung-thong-bao" class="toast-body">Đã cập nhật.</div><button type="button"
-          class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Đóng"></button>
+        <div id="noi-dung-thong-bao" class="toast-body">Đã cập nhật.</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Đóng"></button>
       </div>
     </div>
-  </div>
-
+  </div> 
   <footer id="chan-trang" class="chan-trang">
     <div class="dai-cam-ket-footer">
       <div class="container luoi-cam-ket">
@@ -330,8 +286,8 @@
         <p>Chuyên giày thể thao, dép, nón và phụ kiện chính hãng. Hàng có sẵn, tư vấn đúng size, hỗ trợ kiểm tra trước
           khi nhận.</p>
         <ul class="thong-tin-cua-hang">
-          <li><i class="bi bi-building"></i> Hộ kinh doanh SoleStyle 171</li>
-          <li><i class="bi bi-geo-alt"></i> 171 Huỳnh Văn Bánh, Phường 11, Quận Phú Nhuận, TP.HCM</li>
+          <li><i class="bi bi-building"></i> Hộ kinh doanh SoleStyle 42</li>
+          <li><i class="bi bi-geo-alt"></i> 140 Lê Trọng Tấn, Tây Thạnh, TP. Hồ Chí Minh</li>
           <li><i class="bi bi-clock"></i> Mở cửa: 10:00 - 22:00 mỗi ngày</li>
         </ul>
         <div class="mang-xa-hoi">
@@ -369,14 +325,15 @@
       <div class="cot-footer">
         <h3>Liên hệ với chúng tôi</h3>
         <ul class="thong-tin-lien-he-footer">
-          <li><i class="bi bi-telephone"></i> 0707 717 271</li>
+          <li><i class="bi bi-telephone"></i> 0368068274</li>
           <li><i class="bi bi-envelope"></i> solestyle.cskh@gmail.com</li>
           <li><i class="bi bi-chat-dots"></i> Zalo / Facebook: SoleStyle</li>
         </ul>
         <div class="khung-ban-do">
-          <iframe title="Bản đồ cửa hàng SoleStyle"
-            src="https://maps.google.com/maps?q=171%20Hu%E1%BB%B3nh%20V%C4%83n%20B%C3%A1nh%20Ph%C3%BA%20Nhu%E1%BA%ADn%20TPHCM&t=&z=14&ie=UTF8&iwloc=&output=embed"
-            loading="lazy"></iframe>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0572728099755!2d106.62625947570342!3d10.806925558629016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752be27d8b4f4d%3A0x92dcba2950430867!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBUaMawxqFuZyBUUC4gSOG7kyBDaMOtIE1pbmggKEhVSVQp!5e0!3m2!1svi!2s!4v1781927571932!5m2!1svi!2s"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
@@ -388,11 +345,10 @@
       </div>
     </div>
   </footer>
-
+ 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/data/products.js"></script>
   <script src="assets/js/core/common.js"></script>
   <script src="assets/js/pages/product-detail.js"></script>
 </body>
-
 </html>

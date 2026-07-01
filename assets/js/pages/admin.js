@@ -1,16 +1,4 @@
-/**
- * admin.js - Trang quản trị (admin.html)
- * 
- * Nội dung:
- * - Kiểm tra session admin, nếu không có -> chuyển về login
- * - Quản lý tài khoản khách hàng (CRUD)
- * - Quản lý sản phẩm (CRUD) với khả năng hợp nhất từ sản phẩm mặc định và sản phẩm tùy chỉnh
- * - Sử dụng localStorage với các key riêng: soleStyleTaiKhoan, admin_products, admin_deleted_products
- */
-
-// Dùng IIFE
-(() => {
-    // =========== 1. HẰNG SỐ VÀ BIẾN ===========
+ (() => { 
     const storageKeys = {
         users: "soleStyleTaiKhoan",
         legacyUsers: "custom_users",
@@ -24,8 +12,7 @@
 
     let userModalInstance = null;
     let productModalInstance = null;
-
-    // =========== 2. KHỞI TẠO ===========
+ 
     document.addEventListener("DOMContentLoaded", initAdminPage);
 
     function initAdminPage() {
@@ -35,14 +22,12 @@
             return;
         }
 
-        migrateLegacyUsers();   // Chuyển đổi từ key cũ nếu có
-        bindNavigation();       // Gán sự kiện chuyển tab
-        bindActions();          // Gán sự kiện cho các nút
-        loadUsers();            // Hiển thị danh sách tài khoản
-        loadProducts();         // Hiển thị danh sách sản phẩm
-    }
-
-    // =========== 3. HÀM TIỆN ÍCH CHUNG ===========
+        migrateLegacyUsers();   
+        bindNavigation();      
+        bindActions();          
+        loadUsers();            
+        loadProducts();       
+    } 
     function readStorage(key, fallback) {
         try {
             const rawValue = localStorage.getItem(key);
@@ -81,8 +66,7 @@
         const modalElement = document.getElementById(elementId);
         return modalElement && window.bootstrap ? bootstrap.Modal.getOrCreateInstance(modalElement) : null;
     }
-
-    // =========== 4. CHUYỂN TAB ===========
+ 
     function bindNavigation() {
         const navLinks = document.querySelectorAll(".admin-nav-link");
         const sections = document.querySelectorAll(".admin-section");
@@ -97,8 +81,7 @@
             });
         });
     }
-
-    // =========== 5. SỰ KIỆN CHUNG ===========
+ 
     function bindActions() {
         document.getElementById("adminLogoutBtn")?.addEventListener("click", logoutAdmin);
         document.getElementById("openUserModalBtn")?.addEventListener("click", openUserModal);
@@ -117,8 +100,7 @@
         localStorage.removeItem(storageKeys.currentUser);
         window.location.href = "./login.html";
     }
-
-    // =========== 6. QUẢN LÝ TÀI KHOẢN ===========
+ 
     function normalizeUser(user, index = 0) {
         const email = normalizeEmail(user.email || user.account || user.username);
         if (!email) return null;
@@ -142,8 +124,7 @@
     function saveUsers(users) {
         writeStorage(storageKeys.users, users.map((user, index) => normalizeUser(user, index)).filter(Boolean));
     }
-
-    // Chuyển đổi từ key cũ (custom_users) sang key mới
+ 
     function migrateLegacyUsers() {
         const legacyUsers = readStorage(storageKeys.legacyUsers, []);
         if (!Array.isArray(legacyUsers) || legacyUsers.length === 0) return;
@@ -248,24 +229,20 @@
             alert("Vui lòng nhập đầy đủ họ tên, email và mật khẩu.");
             return;
         }
-
-        // Kiểm tra trùng email (trừ trường hợp sửa chính tài khoản đó)
+ 
         const duplicatedEmail = users.some((user) => user.email === email && user.email !== oldEmail);
         if (duplicatedEmail) {
             alert("Email này đã tồn tại trong hệ thống.");
             return;
-        }
-
-        if (oldEmail) {
-            // Sửa tài khoản cũ
+        } 
+        if (oldEmail) { 
             const index = users.findIndex((user) => user.email === oldEmail);
             if (index === -1) {
                 alert("Không tìm thấy tài khoản cần sửa.");
                 return;
             }
             users[index] = { ...users[index], hoTen, email, dienThoai, matKhau };
-        } else {
-            // Thêm mới
+        } else { 
             users.unshift({
                 ma: `U${Date.now()}`,
                 hoTen,
@@ -274,8 +251,7 @@
                 matKhau,
                 ngayTao: new Date().toISOString()
             });
-        }
-
+        } 
         saveUsers(users);
         loadUsers();
         userModalInstance?.hide();
@@ -285,8 +261,7 @@
         const normalizedEmail = normalizeEmail(email);
         if (!confirm("Bạn có chắc chắn muốn xóa tài khoản này?")) return;
 
-        const users = getUsers().filter((user) => user.email !== normalizedEmail);
-        // Nếu xóa chính user đang đăng nhập, xóa luôn session
+        const users = getUsers().filter((user) => user.email !== normalizedEmail); 
         const currentUser = readStorage(storageKeys.currentUser, null);
         if (normalizeEmail(currentUser?.email) === normalizedEmail) {
             localStorage.removeItem(storageKeys.currentUser);
@@ -294,19 +269,14 @@
 
         saveUsers(users);
         loadUsers();
-    }
-
-    // =========== 7. QUẢN LÝ SẢN PHẨM ===========
-
-    // Lấy danh sách sản phẩm mặc định (từ biến toàn cục defaultProducts)
+    } 
     function getDefaultProducts() {
         if (typeof defaultProducts === "undefined" || !Array.isArray(defaultProducts)) {
             return [];
         }
         return defaultProducts.map((product) => normalizeProduct(product, true));
     }
-
-    // Lấy sản phẩm đã được lưu (admin thêm/sửa)
+ 
     function getStoredProducts() {
         return readStorage(storageKeys.products, [])
             .map((product) => normalizeProduct(product, false))
@@ -316,8 +286,7 @@
     function saveStoredProducts(products) {
         writeStorage(storageKeys.products, products.map((product) => normalizeProduct(product, false)));
     }
-
-    // Lấy danh sách ID sản phẩm mặc định đã bị xóa
+ 
     function getDeletedProductIds() {
         return readStorage(storageKeys.deletedProducts, []).map((id) => normalizeId(id)).filter(Boolean);
     }
@@ -326,8 +295,7 @@
         const uniqueIds = Array.from(new Set(ids.map((id) => normalizeId(id)).filter(Boolean)));
         writeStorage(storageKeys.deletedProducts, uniqueIds);
     }
-
-    // Chuẩn hóa object sản phẩm (đồng bộ thuộc tính tiếng Việt và tiếng Anh)
+ 
     function normalizeProduct(product, isDefaultProduct = false) {
         const id = normalizeId(product.ma ?? product.id ?? product.productId ?? product.code ?? product.slug);
         const price = Number(product.gia ?? product.price ?? 0) || 0;
@@ -370,20 +338,17 @@
             isDefaultProduct
         };
     }
-
-    // Hợp nhất sản phẩm mặc định và sản phẩm lưu (loại bỏ đã xóa)
+ 
     function getProductsForAdmin() {
         const deletedIds = new Set(getDeletedProductIds());
         const products = new Map();
-
-        // Thêm sản phẩm mặc định (chưa bị xóa)
+ 
         getDefaultProducts()
             .filter((product) => !deletedIds.has(normalizeId(product.ma)))
             .forEach((product) => {
                 products.set(normalizeId(product.ma), product);
             });
-
-        // Ghi đè hoặc thêm sản phẩm từ admin_products
+ 
         getStoredProducts().forEach((product) => {
             const id = normalizeId(product.ma);
             if (!id || deletedIds.has(id)) return;
@@ -504,16 +469,14 @@
             alert("Vui lòng nhập đầy đủ ID, tên, danh mục, ảnh và giá bán hợp lệ.");
             return;
         }
-
-        // Kiểm tra trùng ID (trừ trường hợp sửa chính nó)
+ 
         const currentProducts = getProductsForAdmin();
         const duplicatedId = currentProducts.some((product) => normalizeId(product.ma) === id && normalizeId(product.ma) !== oldId);
         if (duplicatedId) {
             alert("ID sản phẩm đã tồn tại trong hệ thống.");
             return;
         }
-
-        // Lấy sản phẩm cũ (nếu có) để giữ lại các thuộc tính không thay đổi
+ 
         const existingProduct = oldId ? getProductById(oldId) : null;
         const productData = normalizeProduct({
             ...(existingProduct || {}),
@@ -533,26 +496,21 @@
             danhGia: existingProduct?.danhGia || 5,
             soDanhGia: existingProduct?.soDanhGia || 0
         });
-
-        // Cập nhật danh sách sản phẩm lưu
+ 
         let storedProducts = getStoredProducts();
         // Xóa sản phẩm cũ nếu có
         if (oldId) {
             storedProducts = storedProducts.filter((product) => normalizeId(product.ma) !== oldId);
-        }
-        // Xóa sản phẩm trùng ID (đề phòng)
-        storedProducts = storedProducts.filter((product) => normalizeId(product.ma) !== id);
-        // Thêm vào đầu danh sách
+        } 
+        storedProducts = storedProducts.filter((product) => normalizeId(product.ma) !== id); 
         storedProducts.unshift(productData);
         saveStoredProducts(storedProducts);
-
-        // Nếu sản phẩm này là sản phẩm mặc định và bị thay đổi ID, đánh dấu ID cũ là đã xóa
+ 
         const deletedIds = getDeletedProductIds();
         const oldDefaultProductExists = oldId && oldId !== id && getDefaultProducts().some((product) => normalizeId(product.ma) === oldId);
         if (oldDefaultProductExists && !deletedIds.includes(oldId)) {
             deletedIds.push(oldId);
-        }
-        // Nếu ID mới trùng với sản phẩm mặc định, xóa nó khỏi danh sách đã xóa
+        } 
         const newDefaultProductExists = getDefaultProducts().some((product) => normalizeId(product.ma) === id);
         if (newDefaultProductExists && deletedIds.includes(id)) {
             const index = deletedIds.indexOf(id);
@@ -573,12 +531,10 @@
         }
 
         if (!confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) return;
-
-        // Xóa khỏi danh sách lưu
+ 
         const storedProducts = getStoredProducts().filter((item) => normalizeId(item.ma) !== normalizedId);
         saveStoredProducts(storedProducts);
-
-        // Nếu là sản phẩm mặc định, thêm ID vào danh sách đã xóa
+ 
         const defaultProductExists = getDefaultProducts().some((item) => normalizeId(item.ma) === normalizedId);
         const deletedIds = getDeletedProductIds();
         if (defaultProductExists && !deletedIds.includes(normalizedId)) {

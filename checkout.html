@@ -2,475 +2,431 @@
 <html lang="vi">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Thanh toán | SoleStyle</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/components/header.css">
-    <link rel="stylesheet" href="assets/css/components/footer.css">
-    <link rel="stylesheet" href="assets/css/components/breadcrumb.css">
-    <link rel="stylesheet" href="assets/css/pages/checkout.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thanh toán | SoleStyle</title>
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components/header.css">
+  <link rel="stylesheet" href="assets/css/components/footer.css">
+  <link rel="stylesheet" href="assets/css/components/breadcrumb.css"> 
+  <link rel="stylesheet" href="assets/css/pages/checkout.css">
 </head>
 
-<body data-page="checkout">
-    <header class="dau-trang-cua-hang">
-        <div class="dai-loi-ich">
-            <div class="container noi-dung-dai-loi-ich">
-                <span><i class="bi bi-telephone-fill"></i> Hotline: 0707 717 271</span>
-                <span><i class="bi bi-envelope-fill"></i> solestyle.cskh@gmail.com</span>
-                <span><i class="bi bi-geo-alt-fill"></i> 171 Huỳnh Văn Bánh, Phú Nhuận, TP.HCM</span>
-            </div>
+<body data-page="checkout"> 
+  <div class="floating-contact-wrapper">
+    <a href="tel:0368068274" class="floating-contact-btn btn-phone" aria-label="Gọi điện thoại">
+      <i class="bi bi-telephone-fill"></i>
+      <div class="ring"></div>
+      <div class="ring2"></div>
+    </a>
+    <a href="#" id="messenger-chat-toggle" class="floating-contact-btn btn-zalo" aria-label="Chat với AI">
+      <i class="bi bi-messenger"></i>
+      <div class="ring"></div>
+      <div class="ring2"></div>
+    </a>
+  </div>
+  <div id="chat-box">
+    <div class="chat-header">
+      <span>Chat AI Hỗ Trợ</span>
+      <button id="chat-close">✖</button>
+    </div>
+    <iframe src="https://www.chatbase.co/chatbot-iframe/L4mRTlZojOYt5UbMKaqWi" width="100%" height="100%" frameborder="0"
+      allow="clipboard-write; microphone"></iframe>
+  </div>
+ 
+  <header class="dau-trang-cua-hang">
+    <div class="dai-loi-ich">
+      <div class="container noi-dung-dai-loi-ich">
+        <span><i class="bi bi-telephone-fill"></i> Hotline: 0707 717 271</span>
+        <span><i class="bi bi-envelope-fill"></i> solestyle.cskh@gmail.com</span>
+        <span><i class="bi bi-geo-alt-fill"></i> 171 Huỳnh Văn Bánh, Phú Nhuận, TP.HCM</span>
+      </div>
+    </div>
+    <nav id="thanh-dieu-huong" class="thanh-chinh-dau-trang navbar">
+      <div class="container noi-dung-header">
+        <a class="logo-cua-hang d-flex align-items-center gap-2" href="#">
+          <span class="ky-hieu-logo">S</span>
+          <span>
+            SoleStyle
+            <small>Only Real</small>
+          </span>
+        </a>
+        <form id="bieu-mau-tim-kiem-dau-trang" class="thanh-tim-kiem" role="search">
+          <i class="bi bi-search"></i>
+          <input id="o-tim-kiem" type="search" placeholder="Tìm giày, dép, nón, phụ kiện..."
+            aria-label="Tìm sản phẩm">
+          <button type="submit" aria-label="Tìm kiếm"><i class="bi bi-arrow-right"></i></button>
+        </form>
+        <div class="hanh-dong-header">
+          <div id="hanh-dong-khach" class="nhom-tai-khoan">
+            <a class="btn btn-outline-dark nut-dang-nhap" href="login.html" aria-label="Đăng nhập">
+              <i class="bi bi-box-arrow-in-right"></i>
+              <span>Đăng nhập</span>
+            </a>
+          </div>
+          <div id="hanh-dong-nguoi-dung" class="dropdown d-none">
+            <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="bi bi-person-circle"></i>
+              <span id="ten-nguoi-dung">Tài khoản</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><span id="email-nguoi-dung" class="dropdown-item-text text-secondary"></span></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><button id="nut-dang-xuat" class="dropdown-item" type="button">Đăng xuất</button></li>
+            </ul>
+          </div>
+          <button id="nut-mo-gio-hang" class="btn btn-dark position-relative nut-gio-hang" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#khung-gio-hang" aria-controls="khung-gio-hang">
+            <i class="bi bi-bag"></i>
+            <span class="chu-gio-hang ms-1">Giỏ hàng</span>
+            <span id="so-luong-gio-hang"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">0</span>
+          </button>
         </div>
-
-        <nav id="thanh-dieu-huong" class="thanh-chinh-dau-trang navbar">
-            <div class="container noi-dung-header">
-                <a class="logo-cua-hang d-flex align-items-center gap-2" href="#">
-                    <span class="ky-hieu-logo">S</span>
-                    <span>
-                        SoleStyle
-                        <small>Only Real</small>
-                    </span>
-                </a>
-
-                <form id="bieu-mau-tim-kiem-dau-trang" class="thanh-tim-kiem" role="search">
-                    <i class="bi bi-search"></i>
-                    <input id="o-tim-kiem" type="search" placeholder="Tìm giày, dép, nón, phụ kiện..."
-                        aria-label="Tìm sản phẩm">
-                    <button type="submit" aria-label="Tìm kiếm"><i class="bi bi-arrow-right"></i></button>
-                </form>
-
-                <div class="hanh-dong-header">
-                    <div id="hanh-dong-khach" class="nhom-tai-khoan">
-                        <a class="btn btn-outline-dark nut-dang-nhap" href="login.html" aria-label="Đăng nhập">
-                            <i class="bi bi-box-arrow-in-right"></i>
-                            <span>Đăng nhập</span>
-                        </a>
-                    </div>
-
-                    <div id="hanh-dong-nguoi-dung" class="dropdown d-none">
-                        <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="bi bi-person-circle"></i>
-                            <span id="ten-nguoi-dung">Tài khoản</span>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><span id="email-nguoi-dung" class="dropdown-item-text text-secondary"></span></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><button id="nut-dang-xuat" class="dropdown-item" type="button">Đăng xuất</button></li>
-                        </ul>
-                    </div>
-
-                    <button id="nut-mo-gio-hang" class="btn btn-dark position-relative nut-gio-hang" type="button"
-                        data-bs-toggle="offcanvas" data-bs-target="#khung-gio-hang" aria-controls="khung-gio-hang">
-                        <i class="bi bi-bag"></i>
-                        <span class="chu-gio-hang ms-1">Giỏ hàng</span>
-                        <span id="so-luong-gio-hang"
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">0</span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <nav id="thanh-danh-muc" class="thanh-dieu-huong thanh-danh-muc navbar navbar-expand-lg sticky-top">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#khung-menu"
-                    aria-controls="khung-menu" aria-expanded="false" aria-label="Mở menu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="khung-menu">
-                    <ul class="navbar-nav danh-sach-danh-muc mx-auto mb-2 mb-lg-0 align-items-lg-center">
-                        <li class="nav-item"><a class="nav-link" href="products.html">Sản phẩm</a></li>
-                        <li class="nav-item"><button class="nav-link nut-loc-danh-muc" type="button"
-                                data-loc-danh-muc="Giày">Giày</button></li>
-                        <li class="nav-item"><button class="nav-link nut-loc-danh-muc" type="button"
-                                data-loc-danh-muc="Dép">Dép</button></li>
-                        <li class="nav-item"><button class="nav-link nut-loc-danh-muc" type="button"
-                                data-loc-danh-muc="Nón">Nón</button></li>
-                        <li class="nav-item"><button class="nav-link nut-loc-danh-muc" type="button"
-                                data-loc-danh-muc="Phụ kiện">Phụ kiện</button></li>
-                        <li class="nav-item"><a class="nav-link" href="#chan-trang">Liên hệ</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <nav class="checkout-breadcrumb" aria-label="Đường dẫn thanh toán">
-        <div class="container" style="max-width: 950px">
-            <a href="./index.html">Trang chủ</a>
-            <i class="bi bi-chevron-right"></i>
-
-            <a href="./products.html">Sản phẩm</a>
-            <i class="bi bi-chevron-right"></i>
-
-            <a href="./cart.html">Giỏ hàng</a>
-            <i class="bi bi-chevron-right"></i>
-
-            <span>Thanh toán</span>
-        </div>
+      </div>
     </nav>
-
-    <main class="checkout-page">
-        <section class="checkout-heading pb-0">
-            <div class="container" style="max-width: 950px">
-                <div class="checkout-title-row border-bottom pb-3">
-                    <div>
-                        <span class="eyebrow text-primary fw-bold"><i class="bi bi-shield-check"></i> Thanh toán an
-                            toàn</span>
-                        <h1 class="fw-bold mt-4">Hoàn tất đơn hàng</h1>
-                    </div>
-                    <a class="checkout-back-link text-secondary" href="./index.html#featured"><i
-                            class="bi bi-arrow-left"></i> Tiếp tục mua sắm</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="checkout-content pt-4">
-            <div class="container" style="max-width: 950px">
-                <form id="checkoutForm" novalidate>
-                    <div class="checkout-main">
-                        <section class="checkout-panel border-0 shadow-sm mb-4 p-4 rounded-4">
-                            <div class="panel-title mb-4">
-                                <div>
-                                    <h2 class="fs-4 fw-bold mb-0">Địa chỉ nhận hàng</h2>
-                                </div>
-                                <i class="bi bi-geo-alt fs-2 text-primary opacity-75"></i>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <select class="form-select checkout-input py-3 fw-semibold shadow-none"
-                                        id="addressSelect" name="customerAddressId">
-                                        <option value="">Đang tải địa chỉ...</option>
-                                    </select>
-                                    <p class="text-muted small mt-2 mb-0">
-                                        <i class="bi bi-info-circle"></i> Vui lòng thiết lập địa chỉ trong <a
-                                            href="./profile.html" class="text-primary text-decoration-none">trang cá
-                                            nhân</a> nếu chưa có.
-                                    </p>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label text-secondary" for="orderNote">Ghi chú đơn hàng</label>
-                                    <textarea id="orderNote" name="orderNote" class="form-control checkout-input py-3"
-                                        rows="3"
-                                        placeholder="Nhập yêu cầu giao hàng, số căn cước, giờ nhận..."></textarea>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="checkout-panel border-0 shadow-sm mb-4 p-4 rounded-4 bg-light">
-                            <div class="panel-title mb-3 border-bottom pb-3">
-                                <div>
-                                    <h2 class="fs-4 fw-bold mb-0">Kiểm tra sản phẩm</h2>
-                                </div>
-                                <i class="bi bi-bag-check fs-2 text-primary opacity-75"></i>
-                            </div>
-                            <div class="cart-items border-0 p-0 m-0" id="cartItems"></div>
-                        </section>
-
-                        <section class="checkout-panel border-0 shadow-sm mb-4 p-4 rounded-4">
-                            <div class="panel-title mb-4">
-                                <div>
-                                    <h2 class="fs-4 fw-bold mb-0">Hình thức nhận hàng</h2>
-                                </div>
-                                <i class="bi bi-truck fs-2 text-primary opacity-75"></i>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="choice-card h-100 shadow-none bg-light">
-                                        <input type="radio" name="shippingMethod" value="standard" checked />
-                                        <span class="choice-icon bg-white shadow-sm"><i
-                                                class="bi bi-box-seam text-primary"></i></span>
-                                        <span>
-                                            <strong class="fs-6">Giao tiêu chuẩn</strong>
-                                            <small class="text-secondary">Đơn dưới 5 triệu miễn phí, trên 5 triệu phí
-                                                0.1%</small>
-                                        </span>
-                                    </label>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="choice-card h-100 shadow-none bg-light">
-                                        <input type="radio" name="shippingMethod" value="express" />
-                                        <span class="choice-icon bg-white shadow-sm"><i
-                                                class="bi bi-lightning-charge text-warning"></i></span>
-                                        <span>
-                                            <strong class="fs-6">Giao siêu tốc</strong>
-                                            <small class="text-secondary">Giao nhanh nội thành, phí linh hoạt theo
-                                                đơn</small>
-                                        </span>
-                                    </label>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <label class="choice-card h-100 shadow-none bg-light">
-                                        <input type="radio" name="shippingMethod" value="pickup" />
-                                        <span class="choice-icon bg-white shadow-sm"><i
-                                                class="bi bi-shop text-success"></i></span>
-                                        <span>
-                                            <strong class="fs-6">Nhận tại cửa hàng</strong>
-                                            <small class="text-secondary">Miễn phí nhận tại: 140 Lê Trọng Tấn, Tân
-                                                Phú</small>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                        </section>
-                        <section class="checkout-panel border-0 shadow-sm mb-4 p-4 rounded-4">
-                            <div class="point-use-row">
-                                <div class="point-left">
-                                    <span class="point-icon">T</span>
-                                    <div>
-                                        <div class="fw-bold">Điểm thưởng</div>
-                                        <div class="text-muted small">Hiện có <strong id="availablePointText">0</strong>
-                                            điểm</div>
-                                    </div>
-                                </div>
-                                <div class="point-right">
-                                    <span id="pointMoneyText" class="text-muted me-3"> [-0đ] </span>
-                                    <label class="switch">
-                                        <input type="checkbox" id="usePointSwitch" />
-                                        <span class="slider"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="checkout-panel border-0 shadow-sm mb-4 p-4 rounded-4">
-                            <div class="panel-title mb-4">
-                                <div>
-                                    <h2 class="fs-4 fw-bold mb-0">Phương thức thanh toán</h2>
-                                </div>
-                                <i class="bi bi-wallet2 fs-2 text-primary opacity-75"></i>
-                            </div>
-                            <div class="row g-3 payment-methods">
-                                <div class="col-md-6">
-                                    <label class="choice-card h-100 shadow-none bg-light">
-                                        <input type="radio" name="paymentMethod" value="cod" checked />
-                                        <span class="choice-icon bg-white shadow-sm"><i
-                                                class="bi bi-cash-stack text-success"></i></span>
-                                        <span>
-                                            <strong class="fs-6">Tiền mặt (COD)</strong>
-                                            <small class="text-secondary">Thanh toán khi nhận hàng</small>
-                                        </span>
-                                    </label>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="choice-card h-100 shadow-none bg-light">
-                                        <input type="radio" name="paymentMethod" value="bank" />
-                                        <span class="choice-icon bg-white shadow-sm"><i
-                                                class="bi bi-bank text-info"></i></span>
-                                        <span>
-                                            <strong class="fs-6">Chuyển khoản</strong>
-                                            <small class="text-secondary">Quét mã QR sau khi đặt hàng</small>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="payment-extra d-none mt-4 p-4 rounded-4 border bg-white shadow-sm"
-                                id="cardFields">
-                                <h6 class="fw-bold mb-3"><i class="bi bi-lock-fill text-success"></i> Nhập thông tin thẻ
-                                </h6>
-                                <div class="row g-3">
-                                    <div class="col-12">
-                                        <label class="form-label text-secondary" for="cardNumber">Số thẻ</label>
-                                        <input class="form-control checkout-input py-2" id="cardNumber" type="text"
-                                            inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label text-secondary" for="cardExpiry">Ngày hết hạn</label>
-                                        <input class="form-control checkout-input py-2" id="cardExpiry" type="text"
-                                            inputmode="numeric" maxlength="5" placeholder="MM/YY" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label text-secondary" for="cardCvv">CVV</label>
-                                        <input class="form-control checkout-input py-2" id="cardCvv" type="password"
-                                            inputmode="numeric" maxlength="4" placeholder="•••" />
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="checkout-panel border-warning shadow mb-5 p-4 rounded-4"
-                            style="background-color: #fffaf0">
-                            <h3 class="fs-5 fw-bold mb-3 border-bottom border-warning-subtle pb-3"><i
-                                    class="bi bi-receipt"></i> Tóm tắt thanh toán</h3>
-                            <div class="summary-lines mt-0">
-                                <div class="d-flex justify-content-between mb-2 fs-6">
-                                    <span class="text-secondary">Tổng tiền hàng</span>
-                                    <strong id="subtotalValue" class="text-dark">0 đ</strong>
-                                </div>
-                                <div class="d-flex justify-content-between mb-2 fs-6">
-                                    <span class="text-secondary">Điểm thưởng</span>
-                                    <strong id="pointDiscountValue" class="text-success">0 đ</strong>
-                                </div>
-                                <div class="d-flex justify-content-between mb-3 fs-6">
-                                    <span class="text-secondary">Phí giao hàng</span>
-                                    <strong id="shippingValue" class="text-dark">0 đ</strong>
-                                </div>
-                                <div
-                                    class="total border-top border-warning-subtle pt-3 mt-2 d-flex justify-content-between align-items-center">
-                                    <span class="fs-5 fw-bold text-dark">Tổng thanh toán</span>
-                                    <strong id="totalValue" class="text-danger fw-bolder">0 đ</strong>
-                                </div>
-                            </div>
-
-                            <button
-                                class="btn btn-outline-danger checkout-submit mt-3 w-100 fs-5 py-3 shadow-sm fw-bold"
-                                style="border-radius: 12px" type="submit" id="submitOrderBtn">ĐẶT HÀNG NGAY</button>
-                            <p class="text-center text-secondary small mt-3 mb-0"><i
-                                    class="bi bi-shield-lock-fill text-success"></i> Giao dịch được mã hóa an toàn
-                                256-bit</p>
-                        </section>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer id="chan-trang" class="chan-trang">
-        <div class="dai-cam-ket-footer">
-            <div class="container luoi-cam-ket">
-                <div>
-                    <i class="bi bi-patch-check"></i>
-                    <span>Cam kết chính hãng 100%</span>
-                </div>
-                <div>
-                    <i class="bi bi-arrow-repeat"></i>
-                    <span>Hỗ trợ đổi hàng trong 30 ngày</span>
-                </div>
-                <div>
-                    <i class="bi bi-truck"></i>
-                    <span>Giao hàng toàn quốc</span>
-                </div>
-                <div>
-                    <i class="bi bi-headset"></i>
-                    <span>Tư vấn size nhanh qua hotline</span>
-                </div>
-            </div>
+    <nav id="thanh-danh-muc" class="thanh-dieu-huong thanh-danh-muc navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#khung-menu"
+          aria-controls="khung-menu" aria-expanded="false" aria-label="Mở menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="khung-menu">
+          <ul class="navbar-nav danh-sach-danh-muc mx-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="products.html">Sản phẩm</a></li>
+            <li class="nav-item"><button class="nav-link nut-loc-danh-muc" type="button"
+                data-loc-danh-muc="Giày">Giày</button></li>
+            <li class="nav-item"><button class="nav-link nut-loc-danh-muc" type="button"
+                data-loc-danh-muc="Dép">Dép</button></li>
+            <li class="nav-item"><button class="nav-link nut-loc-danh-muc" type="button"
+                data-loc-danh-muc="Nón">Nón</button></li>
+            <li class="nav-item"><button class="nav-link nut-loc-danh-muc" type="button"
+                data-loc-danh-muc="Phụ kiện">Phụ kiện</button></li>
+            <li class="nav-item"><a class="nav-link" href="#chan-trang">Liên hệ</a></li>
+          </ul>
         </div>
+      </div>
+    </nav>
+  </header>
+ 
+  <nav class="checkout-breadcrumb" aria-label="Đường dẫn thanh toán">
+    <div class="container" style="max-width: 950px">
+      <a href="./index.html">Trang chủ</a>
+      <i class="bi bi-chevron-right"></i>
+      <a href="./products.html">Sản phẩm</a>
+      <i class="bi bi-chevron-right"></i>
+      <a href="./cart.html">Giỏ hàng</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>Thanh toán</span>
+    </div>
+  </nav>
+ 
+  <main class="checkout-page">
+    <section class="checkout-heading pb-0">
+      <div class="container" style="max-width: 950px">
+        <div class="checkout-title-row border-bottom pb-3">
+          <div>
+            <span class="eyebrow text-primary fw-bold"><i class="bi bi-shield-check"></i> Thanh toán an toàn</span>
+            <h1 class="fw-bold mt-4">Hoàn tất đơn hàng</h1>
+          </div>
+          <a class="checkout-back-link text-secondary" href="./index.html#featured"><i class="bi bi-arrow-left"></i> Tiếp tục mua sắm</a>
+        </div>
+      </div>
+    </section>
 
-        <div class="container noi-dung-footer">
-            <div class="cot-footer cot-thuong-hieu-footer">
-                <a class="logo-cua-hang logo-footer d-flex align-items-center gap-2" href="#">
-                    <span class="ky-hieu-logo">S</span>
+    <section class="checkout-content pt-4">
+      <div class="container" style="max-width: 950px">
+        <form id="checkoutForm" novalidate>
+          <div class="checkout-main">
+            <!-- ĐỊA CHỈ -->
+            <section class="checkout-panel border-0 shadow-sm mb-4 p-4 rounded-4">
+              <div class="panel-title mb-4">
+                <div><h2 class="fs-4 fw-bold mb-0">Địa chỉ nhận hàng</h2></div>
+                <i class="bi bi-geo-alt fs-2 text-primary opacity-75"></i>
+              </div>
+              <div class="row g-3">
+                <div class="col-12">
+                  <select class="form-select checkout-input py-3 fw-semibold shadow-none"
+                      id="addressSelect" name="customerAddressId">
+                    <option value="">Đang tải địa chỉ...</option>
+                  </select>
+                  <p class="text-muted small mt-2 mb-0">
+                    <i class="bi bi-info-circle"></i> Vui lòng thiết lập địa chỉ trong <a href="./profile.html" class="text-primary text-decoration-none">trang cá nhân</a> nếu chưa có.
+                  </p>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-secondary" for="orderNote">Ghi chú đơn hàng</label>
+                  <textarea id="orderNote" name="orderNote" class="form-control checkout-input py-3" rows="3"
+                    placeholder="Nhập yêu cầu giao hàng, số căn cước, giờ nhận..."></textarea>
+                </div>
+              </div>
+            </section>
+ 
+            <section class="checkout-panel border-0 shadow-sm mb-4 p-4 rounded-4 bg-light">
+              <div class="panel-title mb-3 border-bottom pb-3">
+                <div><h2 class="fs-4 fw-bold mb-0">Kiểm tra sản phẩm</h2></div>
+                <i class="bi bi-bag-check fs-2 text-primary opacity-75"></i>
+              </div>
+              <div class="cart-items border-0 p-0 m-0" id="cartItems"></div>
+            </section>
+ 
+            <section class="checkout-panel border-0 shadow-sm mb-4 p-4 rounded-4">
+              <div class="panel-title mb-4">
+                <div><h2 class="fs-4 fw-bold mb-0">Hình thức nhận hàng</h2></div>
+                <i class="bi bi-truck fs-2 text-primary opacity-75"></i>
+              </div>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="choice-card h-100 shadow-none bg-light">
+                    <input type="radio" name="shippingMethod" value="standard" checked />
+                    <span class="choice-icon bg-white shadow-sm"><i class="bi bi-box-seam text-primary"></i></span>
                     <span>
-                        SoleStyle
-                        <small>Only Real</small>
+                      <strong class="fs-6">Giao tiêu chuẩn</strong>
+                      <small class="text-secondary">Đơn dưới 5 triệu miễn phí, trên 5 triệu phí 0.1%</small>
                     </span>
-                </a>
-                <h2>FOOTGEAR H - Only Real</h2>
-                <p>Chuyên giày thể thao, dép, nón và phụ kiện chính hãng. Hàng có sẵn, tư vấn đúng size, hỗ trợ kiểm tra
-                    trước
-                    khi nhận.</p>
-                <ul class="thong-tin-cua-hang">
-                    <li><i class="bi bi-building"></i> Hộ kinh doanh SoleStyle 171</li>
-                    <li><i class="bi bi-geo-alt"></i> 171 Huỳnh Văn Bánh, Phường 11, Quận Phú Nhuận, TP.HCM</li>
-                    <li><i class="bi bi-clock"></i> Mở cửa: 10:00 - 22:00 mỗi ngày</li>
-                </ul>
-                <div class="mang-xa-hoi">
-                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-                    <a href="tel:0707717271" aria-label="Gọi hotline"><i class="bi bi-telephone-fill"></i></a>
+                  </label>
                 </div>
-            </div>
-
-            <div class="cot-footer">
-                <h3>Hỗ trợ khách hàng</h3>
-                <ul>
-                    <li><a href="#">Chính sách kiểm hàng</a></li>
-                    <li><a href="#">Chính sách vận chuyển</a></li>
-                    <li><a href="#">Chính sách thanh toán</a></li>
-                    <li><a href="#">Chính sách bảo hành sản phẩm</a></li>
-                    <li><a href="#">Chính sách đổi trả và hoàn tiền</a></li>
-                    <li><a href="#">Chính sách bảo mật</a></li>
-                </ul>
-            </div>
-
-            <div class="cot-footer">
-                <h3>Danh mục nổi bật</h3>
-                <ul>
-                    <li><button type="button" data-loc-danh-muc="Giày">Giày chính hãng</button></li>
-                    <li><button type="button" data-loc-danh-muc="Dép">Dép chính hãng</button></li>
-                    <li><button type="button" data-loc-danh-muc="Nón">Nón</button></li>
-                    <li><button type="button" data-loc-danh-muc="Phụ kiện">Phụ kiện</button></li>
-                    <li><a href="#khu-uu-dai">Thương hiệu</a></li>
-                    <li><a href="#khu-san-pham">Khuyến mãi</a></li>
-                </ul>
-            </div>
-
-            <div class="cot-footer">
-                <h3>Liên hệ với chúng tôi</h3>
-                <ul class="thong-tin-lien-he-footer">
-                    <li><i class="bi bi-telephone"></i> 0707 717 271</li>
-                    <li><i class="bi bi-envelope"></i> solestyle.cskh@gmail.com</li>
-                    <li><i class="bi bi-chat-dots"></i> Zalo / Facebook: SoleStyle</li>
-                </ul>
-                <div class="khung-ban-do">
-                    <iframe title="Bản đồ cửa hàng SoleStyle"
-                        src="https://maps.google.com/maps?q=171%20Hu%E1%BB%B3nh%20V%C4%83n%20B%C3%A1nh%20Ph%C3%BA%20Nhu%E1%BA%ADn%20TPHCM&t=&z=14&ie=UTF8&iwloc=&output=embed"
-                        loading="lazy"></iframe>
+                <div class="col-md-6">
+                  <label class="choice-card h-100 shadow-none bg-light">
+                    <input type="radio" name="shippingMethod" value="express" />
+                    <span class="choice-icon bg-white shadow-sm"><i class="bi bi-lightning-charge text-warning"></i></span>
+                    <span>
+                      <strong class="fs-6">Giao siêu tốc</strong>
+                      <small class="text-secondary">Giao nhanh nội thành, phí linh hoạt</small>
+                    </span>
+                  </label>
                 </div>
-            </div>
-        </div>
-
-        <div class="chan-footer-duoi">
-            <div class="container">
-                <p>© 2026 SoleStyle. Giày dép chính hãng cho mọi phong cách.</p>
-                <span>Đang online: 42 | Tuần: 16.839 | Tổng truy cập: 1.754.442</span>
-            </div>
-        </div>
-    </footer>
-
-    <div class="modal fade" id="orderSuccessModal" tabindex="-1" aria-labelledby="orderSuccessTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content checkout-modal">
-                <div class="modal-body text-center">
-                    <div class="success-icon"><i class="bi bi-check2"></i></div>
-                    <h2 id="orderSuccessTitle">Đặt hàng thành công</h2>
-                    <p class="mb-2">Mã đơn hàng: <strong id="orderCode">SS000000</strong></p>
-                    <p class="text-muted">SoleStyle sẽ liên hệ xác nhận thông tin giao hàng trong thời gian sớm nhất.
-                    </p>
-                    <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center mt-4">
-                        <a class="btn btn-outline-dark" href="./products.html">Tiếp tục mua sắm</a>
-                        <a class="btn btn-danger d-flex align-items-center justify-content-center"
-                            href="./profile.html">Xem tài khoản</a>
-                    </div>
+                <div class="col-md-12">
+                  <label class="choice-card h-100 shadow-none bg-light">
+                    <input type="radio" name="shippingMethod" value="pickup" />
+                    <span class="choice-icon bg-white shadow-sm"><i class="bi bi-shop text-success"></i></span>
+                    <span>
+                      <strong class="fs-6">Nhận tại cửa hàng</strong>
+                      <small class="text-secondary">Miễn phí</small>
+                    </span>
+                  </label>
                 </div>
-            </div>
+              </div>
+            </section>
+ 
+            <section class="checkout-panel border-0 shadow-sm mb-4 p-4 rounded-4">
+              <div class="point-use-row">
+                <div class="point-left">
+                  <span class="point-icon">T</span>
+                  <div>
+                    <div class="fw-bold">Điểm thưởng</div>
+                    <div class="text-muted small">Hiện có <strong id="availablePointText">0</strong> điểm</div>
+                  </div>
+                </div>
+                <div class="point-right">
+                  <span id="pointMoneyText" class="text-muted me-3"> [-0đ] </span>
+                  <label class="switch">
+                    <input type="checkbox" id="usePointSwitch" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </section>
+ 
+            <section class="checkout-panel border-0 shadow-sm mb-4 p-4 rounded-4">
+              <div class="panel-title mb-4">
+                <div><h2 class="fs-4 fw-bold mb-0">Phương thức thanh toán</h2></div>
+                <i class="bi bi-wallet2 fs-2 text-primary opacity-75"></i>
+              </div>
+              <div class="row g-3 payment-methods">
+                <div class="col-md-6">
+                  <label class="choice-card h-100 shadow-none bg-light">
+                    <input type="radio" name="paymentMethod" value="cod" checked />
+                    <span class="choice-icon bg-white shadow-sm"><i class="bi bi-cash-stack text-success"></i></span>
+                    <span>
+                      <strong class="fs-6">Tiền mặt (COD)</strong>
+                      <small class="text-secondary">Thanh toán khi nhận hàng</small>
+                    </span>
+                  </label>
+                </div>
+                <div class="col-md-6">
+                  <label class="choice-card h-100 shadow-none bg-light">
+                    <input type="radio" name="paymentMethod" value="bank" />
+                    <span class="choice-icon bg-white shadow-sm"><i class="bi bi-bank text-info"></i></span>
+                    <span>
+                      <strong class="fs-6">Chuyển khoản</strong>
+                      <small class="text-secondary">Quét mã QR sau khi đặt hàng</small>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="payment-extra d-none mt-4 p-4 rounded-4 border bg-white shadow-sm" id="cardFields">
+                <h6 class="fw-bold mb-3"><i class="bi bi-lock-fill text-success"></i> Nhập thông tin thẻ</h6>
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label class="form-label text-secondary" for="cardNumber">Số thẻ</label>
+                    <input class="form-control checkout-input py-2" id="cardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-secondary" for="cardExpiry">Ngày hết hạn</label>
+                    <input class="form-control checkout-input py-2" id="cardExpiry" type="text" inputmode="numeric" maxlength="5" placeholder="MM/YY" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-secondary" for="cardCvv">CVV</label>
+                    <input class="form-control checkout-input py-2" id="cardCvv" type="password" inputmode="numeric" maxlength="4" placeholder="•••" />
+                  </div>
+                </div>
+              </div>
+            </section>
+ 
+            <section class="checkout-panel border-warning shadow mb-5 p-4 rounded-4" style="background-color: #fffaf0">
+              <h3 class="fs-5 fw-bold mb-3 border-bottom border-warning-subtle pb-3"><i class="bi bi-receipt"></i> Tóm tắt thanh toán</h3>
+              <div class="summary-lines mt-0">
+                <div class="d-flex justify-content-between mb-2 fs-6">
+                  <span class="text-secondary">Tổng tiền hàng</span>
+                  <strong id="subtotalValue" class="text-dark">0 đ</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-2 fs-6">
+                  <span class="text-secondary">Điểm thưởng</span>
+                  <strong id="pointDiscountValue" class="text-success">0 đ</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-3 fs-6">
+                  <span class="text-secondary">Phí giao hàng</span>
+                  <strong id="shippingValue" class="text-dark">0 đ</strong>
+                </div>
+                <div class="total border-top border-warning-subtle pt-3 mt-2 d-flex justify-content-between align-items-center">
+                  <span class="fs-5 fw-bold text-dark">Tổng thanh toán</span>
+                  <strong id="totalValue" class="text-danger fw-bolder">0 đ</strong>
+                </div>
+              </div>
+              <button class="btn btn-outline-danger checkout-submit mt-3 w-100 fs-5 py-3 shadow-sm fw-bold"
+                style="border-radius: 12px" type="submit" id="submitOrderBtn">ĐẶT HÀNG NGAY</button>
+              <p class="text-center text-secondary small mt-3 mb-0"><i class="bi bi-shield-lock-fill text-success"></i> Giao dịch được mã hóa an toàn 256-bit</p>
+            </section>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+ 
+  <div class="modal fade" id="orderSuccessModal" tabindex="-1" aria-labelledby="orderSuccessTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content checkout-modal">
+        <div class="modal-body text-center">
+          <div class="success-icon"><i class="bi bi-check2"></i></div>
+          <h2 id="orderSuccessTitle">Đặt hàng thành công</h2>
+          <p class="mb-2">Mã đơn hàng: <strong id="orderCode">SS000000</strong></p>
+          <p class="text-muted">SoleStyle sẽ liên hệ xác nhận thông tin giao hàng trong thời gian sớm nhất.</p>
+          <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center mt-4">
+            <a class="btn btn-outline-dark" href="./products.html">Tiếp tục mua sắm</a>
+            <a class="btn btn-danger d-flex align-items-center justify-content-center" href="./profile.html">Xem tài khoản</a>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="checkout-toast" id="checkoutToast" role="status" aria-live="polite"></div>
+ 
+  <footer id="chan-trang" class="chan-trang">
+    <div class="dai-cam-ket-footer">
+      <div class="container luoi-cam-ket">
+        <div>
+          <i class="bi bi-patch-check"></i>
+          <span>Cam kết chính hãng 100%</span>
+        </div>
+        <div>
+          <i class="bi bi-arrow-repeat"></i>
+          <span>Hỗ trợ đổi hàng trong 30 ngày</span>
+        </div>
+        <div>
+          <i class="bi bi-truck"></i>
+          <span>Giao hàng toàn quốc</span>
+        </div>
+        <div>
+          <i class="bi bi-headset"></i>
+          <span>Tư vấn size nhanh qua hotline</span>
+        </div>
+      </div>
     </div>
 
-    <div class="checkout-toast" id="checkoutToast" role="status" aria-live="polite"></div>
+    <div class="container noi-dung-footer">
+      <div class="cot-footer cot-thuong-hieu-footer">
+        <a class="logo-cua-hang logo-footer d-flex align-items-center gap-2" href="#">
+          <span class="ky-hieu-logo">S</span>
+          <span>
+            SoleStyle
+            <small>Only Real</small>
+          </span>
+        </a>
+        <h2>FOOTGEAR H - Only Real</h2>
+        <p>Chuyên giày thể thao, dép, nón và phụ kiện chính hãng. Hàng có sẵn, tư vấn đúng size, hỗ trợ kiểm tra trước
+          khi nhận.</p>
+        <ul class="thong-tin-cua-hang">
+          <li><i class="bi bi-building"></i> Hộ kinh doanh SoleStyle 42</li>
+          <li><i class="bi bi-geo-alt"></i> 140 Lê Trọng Tấn, Tây Thạnh, TP. Hồ Chí Minh</li>
+          <li><i class="bi bi-clock"></i> Mở cửa: 10:00 - 22:00 mỗi ngày</li>
+        </ul>
+        <div class="mang-xa-hoi">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          <a href="tel:0707717271" aria-label="Gọi hotline"><i class="bi bi-telephone-fill"></i></a>
+        </div>
+      </div>
 
-    <!-- Floating Contact Buttons -->
-    <div class="floating-contact-wrapper">
-        <a href="tel:0376662897" class="floating-contact-btn btn-phone" aria-label="Gọi điện thoại">
-            <i class="bi bi-telephone-fill"></i>
-            <div class="ring"></div>
-            <div class="ring2"></div>
-        </a>
-        <a href="https://www.facebook.com/share/1awF6bD7px/" target="_blank" class="floating-contact-btn btn-zalo"
-            aria-label="Liên hệ qua Zalo/Facebook">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" width="26"
-                height="26" style="object-fit: contain" />
-            <div class="ring"></div>
-            <div class="ring2"></div>
-        </a>
+      <div class="cot-footer">
+        <h3>Hỗ trợ khách hàng</h3>
+        <ul>
+          <li><a href="#">Chính sách kiểm hàng</a></li>
+          <li><a href="#">Chính sách vận chuyển</a></li>
+          <li><a href="#">Chính sách thanh toán</a></li>
+          <li><a href="#">Chính sách bảo hành sản phẩm</a></li>
+          <li><a href="#">Chính sách đổi trả và hoàn tiền</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+        </ul>
+      </div>
+
+      <div class="cot-footer">
+        <h3>Danh mục nổi bật</h3>
+        <ul>
+          <li><button type="button" data-loc-danh-muc="Giày">Giày chính hãng</button></li>
+          <li><button type="button" data-loc-danh-muc="Dép">Dép chính hãng</button></li>
+          <li><button type="button" data-loc-danh-muc="Nón">Nón</button></li>
+          <li><button type="button" data-loc-danh-muc="Phụ kiện">Phụ kiện</button></li>
+          <li><a href="#khu-uu-dai">Thương hiệu</a></li>
+          <li><a href="#khu-san-pham">Khuyến mãi</a></li>
+        </ul>
+      </div>
+
+      <div class="cot-footer">
+        <h3>Liên hệ với chúng tôi</h3>
+        <ul class="thong-tin-lien-he-footer">
+          <li><i class="bi bi-telephone"></i> 0368068274</li>
+          <li><i class="bi bi-envelope"></i> solestyle.cskh@gmail.com</li>
+          <li><i class="bi bi-chat-dots"></i> Zalo / Facebook: SoleStyle</li>
+        </ul>
+        <div class="khung-ban-do">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0572728099755!2d106.62625947570342!3d10.806925558629016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752be27d8b4f4d%3A0x92dcba2950430867!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBUaMawxqFuZyBUUC4gSOG7kyBDaMOtIE1pbmggKEhVSVQp!5e0!3m2!1svi!2s!4v1781927571932!5m2!1svi!2s"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
     </div>
 
-    <script src="./assets/js/data/products.js"></script>
-    <script src="./assets/js/core/common.js"></script>
-    <script src="./assets/js/pages/checkout.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <div class="chan-footer-duoi">
+      <div class="container">
+        <p>© 2026 SoleStyle. Giày dép chính hãng cho mọi phong cách.</p>
+        <span>Đang online: 42 | Tuần: 16.839 | Tổng truy cập: 1.754.442</span>
+      </div>
+    </div>
+  </footer>
+ 
+  <script src="./assets/js/data/products.js"></script>
+  <script src="./assets/js/core/common.js"></script>
+  <script src="./assets/js/pages/checkout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

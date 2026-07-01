@@ -1,28 +1,13 @@
-/**
- * checkout.js - Xử lý trang thanh toán (checkout.html)
- * 
- * Nội dung:
- * - Hiển thị giỏ hàng tóm tắt
- * - Quản lý địa chỉ nhận hàng (từ sổ địa chỉ của user)
- * - Tích điểm / sử dụng điểm giảm giá (1 điểm = 1đ)
- * - Tính phí vận chuyển theo phương thức
- * - Xử lý thanh toán (COD, thẻ)
- * - Lưu đơn hàng, trừ điểm, cộng điểm
- */
-
-// =========== 1. TRẠNG THÁI TOÀN CỤC ===========
-const checkoutState = {
+ const checkoutState = {
     cart: [],
     usePoints: false,
     usedPoints: 0
 };
-
-// Tỷ lệ tích điểm: 1% giá trị đơn hàng (có thể điều chỉnh)
+ 
 const REWARD_RATE = 0.01;
 
 const checkoutElements = {};
-
-// =========== 2. KHỞI TẠO ===========
+ 
 document.addEventListener("DOMContentLoaded", initCheckout);
 
 function initCheckout() {
@@ -37,9 +22,7 @@ function initCheckout() {
     bindCheckoutEvents();
     renderCheckout();
 }
-
-// =========== 3. CÁC HÀM HỖ TRỢ ===========
-
+  
 function cacheCheckoutElements() {
     checkoutElements.form = document.getElementById("checkoutForm");
     checkoutElements.cartItems = document.getElementById("cartItems");
@@ -63,9 +46,7 @@ function cacheCheckoutElements() {
     checkoutElements.availablePointText = document.getElementById("availablePointText");
     checkoutElements.pointMoneyText = document.getElementById("pointMoneyText");
 }
-
-// =========== 4. ĐỊA CHỈ ===========
-
+ 
 function loadAddresses() {
     const addresses = JSON.parse(localStorage.getItem(getAddressStorageKey())) || [];
     const select = checkoutElements.addressSelect;
@@ -105,9 +86,7 @@ function getCurrentUserFromSession() {
     } catch {
         return null;
     }
-}
-
-// =========== 5. ĐIỂM THƯỞNG ===========
+} 
 
 function getRewardHistory() {
     return JSON.parse(localStorage.getItem(getScopedStorageKey("rewardHistory"))) || [];
@@ -136,12 +115,11 @@ function useRewardPoint(point, orderCode) {
     });
     localStorage.setItem(getScopedStorageKey("rewardHistory"), JSON.stringify(history));
 }
-
-// 🔧 ĐÃ SỬA: tích điểm theo tỷ lệ REWARD_RATE
+ 
 function addRewardPoint(orderCode, totalMoney) {
     const history = getRewardHistory();
     const point = Math.floor(totalMoney * REWARD_RATE);
-    if (point <= 0) return; // không tích điểm nếu số tiền quá nhỏ
+    if (point <= 0) return; 
     history.unshift({
         id: Date.now(),
         type: "earn",
@@ -152,8 +130,7 @@ function addRewardPoint(orderCode, totalMoney) {
     });
     localStorage.setItem(getScopedStorageKey("rewardHistory"), JSON.stringify(history));
 }
-
-// =========== 6. GIỎ HÀNG & TÍNH TOÁN ===========
+ 
 
 function readCart() {
     try {
@@ -257,8 +234,7 @@ function money(value) {
 function setText(element, value) {
     if (element) element.textContent = value;
 }
-
-// =========== 7. RENDER CHECKOUT ===========
+ 
 
 function renderCheckout() {
     renderCartItems();
@@ -344,9 +320,7 @@ function updateCartCount() {
     document.querySelectorAll("[data-cart-count], #so-luong-gio-hang").forEach((badge) => {
         badge.textContent = totalQuantity;
     });
-}
-
-// =========== 8. THANH TOÁN ===========
+} 
 
 function bindCheckoutEvents() {
     checkoutElements.cartItems?.addEventListener("click", handleCartAction);
@@ -416,13 +390,11 @@ function submitOrder(event) {
     const totals = getOrderTotals();
     const order = buildOrder(totals);
     saveOrder(order);
-
-    // Trừ điểm: 1 điểm = 1đ, nên số điểm trừ = số tiền usedPoints
+ 
     if (checkoutState.usedPoints > 0) {
         useRewardPoint(checkoutState.usedPoints, order.code);
     }
-
-    // Xóa giỏ hàng
+ 
     checkoutState.cart = [];
     saveCart();
     renderCheckout();
@@ -523,8 +495,7 @@ function createOrderCode() {
 function saveOrder(order) {
     const orders = JSON.parse(localStorage.getItem(getOrderKey())) || [];
     orders.unshift(order);
-    localStorage.setItem(getOrderKey(), JSON.stringify(orders));
-    // Gọi cộng điểm với tổng tiền thực tế (đã trừ điểm)
+    localStorage.setItem(getOrderKey(), JSON.stringify(orders)); 
     addRewardPoint(order.code, order.totals.total);
 }
 
@@ -562,8 +533,7 @@ function escapeHtml(value) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
-
-// =========== 9. CẬP NHẬT TRẠNG THÁI HEADER ===========
+ 
 
 function updateLoginState() {
     const userName = sessionStorage.getItem("user_name");
@@ -592,8 +562,7 @@ function updateLoginState() {
         }
     });
 }
-
-// =========== 10. BREADCRUMB ===========
+ 
 
 function renderCheckoutBreadcrumb() {
     const fromDetail = JSON.parse(localStorage.getItem("checkout_from_detail") || "null");
@@ -637,8 +606,7 @@ function renderCheckoutBreadcrumb() {
     bcCategory.textContent = "Sản phẩm";
     bcCategory.href = "./index.html#featured";
 }
-
-// =========== 11. HÀM TIỆN ÍCH CHUNG ===========
+ 
 
 function getCurrentUser() {
     return getCurrentUserFromSession();
